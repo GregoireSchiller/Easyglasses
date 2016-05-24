@@ -23,3 +23,14 @@
 .bg-dark-blue {
   background: #3b5998;
 }
+
+.global-wrapper {
+  position: relative;
+  min-height: calc(100vh);
+  padding-bottom: 83px;
+}
+
+h2 {
+  font-weight: light;
+  font-size: 40px;
+}

@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
+    <link href='https://fonts.googleapis.com/css?family=Roboto:400,100,300,300italic,700' rel='stylesheet' type='text/css'>
     <title>TODO</title>
     <%= csrf_meta_tags %>
 
@@ -9,11 +10,13 @@
     <%= stylesheet_link_tag    'application', media: 'all' %>
   </head>
   <body>
-    <%= render 'shared/navbar' %>
-    <%= render 'shared/flashes' %>
-    <%= yield %>
-    <%= render 'shared/footer' %>
-    <%= javascript_include_tag 'application' %>
-    <%= yield(:after_js) %>
+    <div class="global-wrapper">
+      <%= render 'shared/navbar' %>
+      <%= render 'shared/flashes' %>
+      <%= yield %>
+      <%= render 'shared/footer' %>
+      <%= javascript_include_tag 'application' %>
+      <%= yield(:after_js) %>
+    </div>
   </body>
 </html>
