@@ -22,3 +22,15 @@
   font-size: 14px;
 }
 
+.btn {
+  background-color: $brand-color !important;
+  border-color: $brand-color !important;
+  color: white;
+}
+
+.btn:hover {
+  color: #DBDEDC;
+  background-color: rgba(63, 114, 175, 0.9) !important;
+  transition: background-color 0.5s ease;
+  border-color: rgba(63, 114, 175, 0.9) !important;
+}
