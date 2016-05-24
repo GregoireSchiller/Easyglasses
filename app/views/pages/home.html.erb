@@ -1,2 +1,35 @@
-<h1>Pages#home</h1>
-<p>Find me in app/views/pages/home.html.erb</p>
+<div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.3)), url(<%= image_url '7.jpg' %>); background-position: center center;">
+  <div class="banner-content">
+    <h1>EasyGlasses</h1>
+    <p>Free online optical exam</p>
+    <a class="btn btn-primary btn-lg banner-button">Test your sight!</a>
+  </div>
+</div>
+
+<div class="wrapper wrapper-color">
+  <div class="container">
+    <h2 class="text-center">How it works</h2>
+    <div class="row">
+      <div class="col-xs-12 col-md-3 text-center">
+        <i class="fa fa-sign-in icon"></i>
+        <h4 class="h4-steps">1. Create your account</h4>
+        <p>Sign up on EasyGlasses! Answer a few questions and know if the test is suitable for you.</p>
+      </div>
+      <div class="col-xs-12 col-md-3 text-center">
+        <i class="fa fa-laptop icon"></i>
+        <h4 class="h4-steps">2. Take the online test</h4>
+        <p>Take our free test using your laptop and your smartphone.</p>
+      </div>
+      <div class="col-xs-12 col-md-3 text-center">
+        <i class="fa fa-user-md icon"></i>
+        <h4 class="h4-steps">3. Doctor review</h4>
+        <p>Your test is sent to an ophtalmologist who will review it and approve our diagnosis.</p>
+      </div>
+      <div class="col-xs-12 col-md-3 text-center">
+        <i class="fa fa-file-text-o icon"></i>
+        <h4 class="h4-steps">4. Receive your prescription</h4>
+        <p>You will then receive your prescription by email and be able to get new glasses or contact lens!</p>
+      </div>
+    </div>
+  </div>
+</div>
