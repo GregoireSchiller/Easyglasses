@@ -1,22 +1,34 @@
-<h2>Sign up</h2>
+<h2 style="text-align: center; margin-bottom: 40px;">Sign up</h2>
 
 <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
   <%= f.error_notification %>
 
-  <div class="form-inputs">
-    <%= f.input :email, required: true, autofocus: true %>
-    <%= f.input :password, required: true, hint: ("#{@minimum_password_length} characters minimum" if @minimum_password_length) %>
-    <%= f.input :password_confirmation, required: true %>
-    <%= f.input :first_name, required: true %>
-    <%= f.input :last_name, required: true %>
-    <%= f.input :date_of_birth, required: true %>
-    <%= f.input :city, required: true %>
-    <%= f.input :shoe_size, required: true %>
+  <div class="form-inputs container">
+    <div class="row">
+      <div class="col-xs-6"><%= f.input :first_name, required: true, autofocus: true, placeholder: "First name", label: false %></div>
+      <div class="col-xs-6"><%= f.input :last_name, required: true, placeholder: "Last name", label: false %></div>
+    </div>
+    <div class="row">
+      <div class="col-xs-6"><%= f.input :email, required: true, placeholder: "Email", label: false %></div>
+    </div>
+    <div class="row">
+      <div class="col-xs-6"><%= f.input :password, required: true, hint: ("#{@minimum_password_length} characters minimum" if @minimum_password_length), placeholder: "Password", label: false %></div>
+      <div class="col-xs-6"><%= f.input :password_confirmation, required: true, placeholder: "Password confirmation", label: false %></div>
+    </div>
+    <div class="row">
+      <div class="col-xs-6 flexbox"><div class="flex-item", style="color: #999999;">Date of birth:</div><div class="flex-item"><%= f.input :date_of_birth, :as => :date, :start_year => Date.today.year - 18,
+  :end_year => 1900, :order => [ :day, :month, :year], :required => true, label: false %></div>
+    </div>
+    <div class="col-xs-6"><%= f.input :city, required: true, placeholder: "City", label: false %></div>
   </div>
 
-  <div class="form-actions">
-    <%= f.button :submit, "Sign up" %>
+  <div class="form-actions container">
+    <div class="row">
+      <div class="col-xs-12 text-center"><%= f.button :submit, "Sign up", class: 'btn btn-primary', style: 'width: 25%; margin: 20px 0 20px 0;' %></div>
+    </div>
+    <div class="row">
+      <div class="col-xs-12 text-center"><%= render "devise/shared/links" %></div>
+    </div>
   </div>
 <% end %>
 
-<%= render "devise/shared/links" %>
