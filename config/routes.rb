@@ -1,7 +1,24 @@
 Rails.application.routes.draw do
   devise_for :users
   root to: 'pages#home'
-  resources :users, only: [:show]
+  resources :users, only: [:show] do
+    resources :reviews, only: [:create, :new, :update, :destroy, :edit]
+  end
+
+resources :exams, only: [:create] do
+  member do
+    get 'desktop_onboading' => 'exams#desktop_onboarding', as: 'desktop_onboarding'
+    get 'desktop_questions' => 'exams#desktop_questions', as: 'desktop_questions'
+    get 'desktop_results' => 'exams#desktop_results', as: 'desktop_results'
+    get 'mobile_onboading' => 'exams#mobile_onboarding', as: 'mobile_onboarding'
+    get 'mobile_questions' => 'exams#mobile_questions', as: 'mobile_questions'
+    get 'mobile_results' => 'exams#mobile_results', as: 'mobile_results'
+    resource :user_answers, only: [:create]
+  end
+end
+
+end
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
@@ -56,4 +73,3 @@ Rails.application.routes.draw do
   #     # (app/controllers/admin/products_controller.rb)
   #     resources :products
   #   end
-end
