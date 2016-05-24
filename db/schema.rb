@@ -11,10 +11,52 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160524090420) do
+ActiveRecord::Schema.define(version: 20160524093157) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "exams", force: :cascade do |t|
+    t.date     "exam_date"
+    t.integer  "score_right"
+    t.integer  "score_left"
+    t.integer  "score_total"
+    t.string   "recommendation"
+    t.integer  "user_id"
+    t.datetime "created_at",     null: false
+    t.datetime "updated_at",     null: false
+  end
+
+  add_index "exams", ["user_id"], name: "index_exams_on_user_id", using: :btree
+
+  create_table "questions", force: :cascade do |t|
+    t.integer  "position"
+    t.integer  "orientation"
+    t.integer  "size"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+  end
+
+  create_table "reviews", force: :cascade do |t|
+    t.string   "description"
+    t.integer  "rating"
+    t.integer  "user_id"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+  end
+
+  add_index "reviews", ["user_id"], name: "index_reviews_on_user_id", using: :btree
+
+  create_table "user_answers", force: :cascade do |t|
+    t.integer  "answered_orientation"
+    t.integer  "question_id"
+    t.integer  "exam_id"
+    t.datetime "created_at",           null: false
+    t.datetime "updated_at",           null: false
+  end
+
+  add_index "user_answers", ["exam_id"], name: "index_user_answers_on_exam_id", using: :btree
+  add_index "user_answers", ["question_id"], name: "index_user_answers_on_question_id", using: :btree
 
   create_table "users", force: :cascade do |t|
     t.string   "email",                  default: "", null: false
@@ -39,4 +81,8 @@ ActiveRecord::Schema.define(version: 20160524090420) do
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
 
+  add_foreign_key "exams", "users"
+  add_foreign_key "reviews", "users"
+  add_foreign_key "user_answers", "exams"
+  add_foreign_key "user_answers", "questions"
 end
