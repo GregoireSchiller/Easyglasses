@@ -1,6 +1,9 @@
 Rails.application.routes.draw do
   devise_for :users
   root to: 'pages#home'
+
+  get "onboarding", to: 'pages#onboarding'
+
   resources :users, only: [:show] do
     resources :reviews, only: [:create, :new, :update, :destroy, :edit]
   end
