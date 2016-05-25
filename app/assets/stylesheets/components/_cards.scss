@@ -1,0 +1,73 @@
+.card {
+  height: 175px;
+  text-shadow: 0 1px 3px rgba(0,0,0,0.6);
+  background-size: cover !important;
+  color: white;
+  position: relative;
+  max-width: 60vh;
+  background-color: rgba(63, 114, 175, 0.55);
+  border-radius: 4px;
+}
+
+.card p {
+  font-style: italic;
+}
+
+.card_title {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  font-size: 12px;
+  text-transform: uppercase;
+}
+
+.test_results {
+  position: absolute;
+  bottom: 10px;
+  left: 10px;
+}
+
+.test_date {
+  position: absolute;
+  bottom: 10px;
+  right: 10px;
+}
+
+.rating {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+}
+
+.review_content {
+  position: absolute;
+  bottom: 10px;
+  left: 10px;
+}
+
+.appointment_results h2 {
+  font-size: 24px;
+}
+
+.appointment_results p {
+  font-size: 13px;
+  }
+
+.card-link {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 100%;
+  z-index:2;
+  background: black;
+  opacity: 0;
+}
+
+.card-link:hover{
+  opacity: 0.1;
+}
+
+.scroll_fix {
+  max-height: calc(100vh - 282px);
+  overflow: scroll;
+}
