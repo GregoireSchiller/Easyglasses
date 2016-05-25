@@ -20,7 +20,7 @@ class ExamsController < ApplicationController
   end
 
   def mobile_onboarding
-
+    render layout: "mobile_onboarding"
   end
 
   def mobile_questions

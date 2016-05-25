@@ -1,0 +1,27 @@
+.mobile .fa-question-circle {
+  color: $blue;
+  font-size: 3em;
+}
+
+.mobile {
+  background-color: #696969;
+}
+
+.mobile-screen {
+  height: 100vh;
+  display: flex;
+  align-items: center;
+}
+.onboarding-instructions {
+  font-weight: bold;
+  color: white;
+  font-size: 30px;
+  text-align: center;
+}
+
+.onboarding-instructions .btn-primary {
+  width: 25vw;
+}
+
+
+

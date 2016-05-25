@@ -14,7 +14,7 @@ resources :exams, only: [:create] do
     get 'desktop_onboading' => 'exams#desktop_onboarding', as: 'desktop_onboarding'
     get 'desktop_questions' => 'exams#desktop_questions', as: 'desktop_questions'
     get 'desktop_results' => 'exams#desktop_results', as: 'desktop_results'
-    get 'mobile_onboading' => 'exams#mobile_onboarding', as: 'mobile_onboarding'
+    get 'mobile_onboarding' => 'exams#mobile_onboarding', as: 'mobile_onboarding'
     get 'mobile_questions' => 'exams#mobile_questions', as: 'mobile_questions'
     get 'mobile_results' => 'exams#mobile_results', as: 'mobile_results'
     resource :user_answers, only: [:create]

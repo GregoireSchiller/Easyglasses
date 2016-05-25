@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link href='https://fonts.googleapis.com/css?family=Roboto:400,100,300,300italic,700' rel='stylesheet' type='text/css'>
+    <script src="http://js.pusher.com/2.0/pusher.min.js"></script>
+    <title>TODO</title>
+    <%= csrf_meta_tags %>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <%= stylesheet_link_tag    'application', media: 'all' %>
+  </head>
+  <body>
+    <div class="global-wrapper mobile">
+      <%= render 'shared/mobile_navbar' %>
+      <%= yield %>
+      <%= javascript_include_tag 'application' %>
+      <%= yield(:after_js) %>
+    </div>
+  </body>
+</html>

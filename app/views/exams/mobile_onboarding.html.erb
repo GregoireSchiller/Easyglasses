@@ -1,0 +1,152 @@
+<div id="onboarding-slide-1" class="container mobile-screen">
+  <div class="row">
+    <div class="col-xs-12">
+      <div class="onboarding-instructions">
+         <p>Welcome to the EasyGlasses eye exam! Press next to begin the tutorial</p>
+        <div class="row">
+          <div class="col-xs-12">
+            <div id="onboarding-next-1" class="btn btn-primary"><strong>Next</strong></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div id="onboarding-slide-2" class="container mobile-screen hidden">
+  <div class="row">
+    <div class="col-xs-12">
+      <div class="onboarding-instructions">
+         <p>If you have a question, press help !</p>
+        <div class="row">
+          <div class="col-xs-6">
+            <div id="onboarding-previous-2" class="btn btn-primary"><strong>Previous</strong></div>
+          </div>
+          <div class="col-xs-6">
+            <div id="onboarding-next-2" class="btn btn-primary"><strong>Next</strong></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div id="onboarding-slide-3" class="container mobile-screen hidden">
+  <div class="row">
+    <div class="col-xs-12">
+      <div class="onboarding-instructions">
+         <p>The next set of tests will be taken from 10 FT away from your computer. The following instructions will get you there. Make sure to take an object with you to mark the spot</p>
+        <div class="row">
+          <div class="col-xs-6">
+            <div id="onboarding-previous-3" class="btn btn-primary"><strong>Previous</strong></div>
+          </div>
+          <div class="col-xs-6">
+            <div id="onboarding-next-3" class="btn btn-primary"><strong>Next</strong></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div id="onboarding-slide-4" class="container mobile-screen hidden">
+  <div class="row">
+    <div class="col-xs-12">
+      <div class="onboarding-instructions">
+       <p>Removing your shoes is very important for accuracy. If you have not removed your shoes, please do so now before selecting "continue"</p>
+        <div class="row">
+          <div class="col-xs-6">
+            <div id="onboarding-previous-4" class="btn btn-primary"><strong>Previous</strong></div>
+          </div>
+          <div class="col-xs-6">
+            <div id="onboarding-next-4" class="btn btn-primary"><strong>Next</strong></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div id="onboarding-slide-5" class="container mobile-screen hidden">
+  <div class="row">
+    <div class="col-xs-12">
+      <div class="onboarding-instructions">
+        <p>First, stand with your back against your computer as pictured here. Make sure your shoes are off.</p>
+        <div class="row">
+          <div class="col-xs-6">
+            <div id="onboarding-previous-5" class="btn btn-primary"><strong>Previous</strong></div>
+          </div>
+          <div class="col-xs-6">
+            <div id="onboarding-next-5" class="btn btn-primary"><strong>Next</strong></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div id="onboarding-slide-6" class="container mobile-screen hidden">
+  <div class="row">
+    <div class="col-xs-12">
+      <div class="onboarding-instructions">
+        <p>Next, measure 11 heel-to-toe steps away from your computer. Step heel-to-toe as pictured here.</p>
+        <div class="row">
+          <div class="col-xs-6">
+            <div id="onboarding-previous-6" class="btn btn-primary"><strong>Previous</strong></div>
+          </div>
+          <div class="col-xs-6">
+            <div id="onboarding-next-6" class="btn btn-primary"><strong>Next</strong></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div id="onboarding-slide-7" class="container mobile-screen hidden">
+  <div class="row">
+    <div class="col-xs-12">
+      <div class="onboarding-instructions">
+        <p>On your 11th step, place an object where your front toe landed</p>
+        <div class="row">
+          <div class="col-xs-6">
+            <div id="onboarding-previous-7" class="btn btn-primary"><strong>Previous</strong></div>
+          </div>
+          <div class="col-xs-6">
+            <div id="onboarding-next-7" class="btn btn-primary"><strong>Next</strong></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div id="onboarding-slide-8" class="container mobile-screen hidden">
+  <div class="row">
+    <div class="col-xs-12">
+      <div class="onboarding-instructions">
+        <p>Then, turn around and face your computer with your toes where you placed the object</p>
+        <div class="row">
+          <div class="col-xs-6">
+            <div id="onboarding-previous-8" class="btn btn-primary"><strong>Previous</strong></div>
+          </div>
+          <div class="col-xs-6">
+            <div id="onboarding-next-8" class="btn btn-primary"><strong>Start EasyGlasses exam!</strong></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<% content_for(:after_js) do %>
+  <%= javascript_tag do %>
+    $(document).ready(function() {
+      <% for i in 1..8 %>
+        $('#onboarding-next-<%= i %>').click(function(event){
+          $('#onboarding-slide-<%= i %>').addClass('hidden');
+          $('#onboarding-slide-<%= i + 1 %>').removeClass('hidden');
+        });
+         $('#onboarding-previous-<%= i %>').click(function(event){
+          $('#onboarding-slide-<%= i %>').addClass('hidden');
+           $('#onboarding-slide-<%= i - 1 %>').removeClass('hidden');
+        });
+      <% end %>
+    });
+  <% end %>
+<% end %>
