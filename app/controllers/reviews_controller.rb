@@ -11,7 +11,7 @@ class ReviewsController < ApplicationController
     if @review.save
       redirect_to user_path(@user)
     else
-      render :new
+      redirect_to controller: "users", action: "show", id: @user.id
     end
   end
 
