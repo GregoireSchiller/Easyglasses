@@ -1,14 +1,31 @@
-<h1>Faire la show du User</h1>
+<h1 style="text-align: center; margin-bottom: 40px;"><%= 'Hello, ' %><%= @user.first_name %></h1>
 <hr>
 
-<%= link_to "Give us a feedback", "user_reviews_path" %>
-
 <div class="container">
-  <%= simple_form_for [@user, @review] do |f| %>
-    <div class="col-sm-offset-4 col-sm-4"> <%= f.input :rating, label: false, :collection => 1..5, include_blank: "Give a mark" %></div>
-    <div class="col-sm-offset-4 col-sm-4"> <%= f.input :description, label: false, input_html: { placeholder: "Please detail your feedback" } %></div>
-    <%= f.input :user_id, :as => :hidden, :input_html => { :value => params[:user_id] } %>
-    <div class="col-sm-offset-4 col-sm-4 text-center"> <%= f.button :submit, "Noter l'utilisateur", class: "btn btn-primary" %> </div>
-  <% end %>
+  <div class="row">
+    <div class="col-xs-6">
+      <h4><%= 'Your record history' %></h4>
+    </div>
+    <div class="col-xs-6 text-right">
+      <% if @user.review == nil %>
+        <%= link_to "Give us a feedback", "user_reviews_path" %>
+        <%= simple_form_for [@user, @review] do |f| %>
+          <div class="col-sm-offset-4 col-sm-4"> <%= f.input :rating, label: false, :collection => 1..5, include_blank: "Give a mark" %></div>
+          <div class="col-sm-offset-4 col-sm-4"> <%= f.input :description, label: false, input_html: { placeholder: "Please detail your feedback" } %></div>
+          <%= f.input :user_id, :as => :hidden, :input_html => { :value => @user.id } %>
+          <div class="col-sm-offset-4 col-sm-4 text-center"> <%= f.button :submit, "Submit rating", class: "btn btn-primary" %> </div>
+        <% end %>
+      <% else %>
+        <%= 'Your feedback on the website' %><br>
+        <% @user.review.rating.times do %>
+          <i class="fa fa-star" aria-hidden="true" style="color: #FFBE00;"></i>
+        <% end %>
+        <% (5 - @user.review.rating).times do %>
+          <i class="fa fa-star-o" aria-hidden="true" style="color: grey;"></i>
+        <% end %>
+        <p><%= @user.review.description %></p>
+      <% end %>
+    </div>
+  </div>
 </div>
 
