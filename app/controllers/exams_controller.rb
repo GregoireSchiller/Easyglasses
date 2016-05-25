@@ -12,7 +12,7 @@ class ExamsController < ApplicationController
   end
 
   def desktop_questions
-
+    @questions = Question.all.order(position: :asc)
   end
 
   def desktop_results

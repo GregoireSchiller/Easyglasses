@@ -1,1 +1,4 @@
-<%= link_to "Response 1", user_answers_path(:question_id => Exam.find(params[:id]).user_answers.count), method: :post %>
+<%= link_to "E", user_answers_path(:question_position => (Exam.find(params[:id]).user_answers.count + 1), :answered_orientation => 1), method: :post, style:"transform: rotate(180deg); display: inline-block" %>
+<%= link_to "Response 2", user_answers_path(:question_position => (Exam.find(params[:id]).user_answers.count + 1), :answered_orientation => 2), method: :post %>
+<%= link_to "Response 3", user_answers_path(:question_position => (Exam.find(params[:id]).user_answers.count + 1), :answered_orientation => 3), method: :post %>
+<%= link_to "Response 4", user_answers_path(:question_position => (Exam.find(params[:id]).user_answers.count + 1), :answered_orientation => 4), method: :post %>
