@@ -64,7 +64,13 @@
 .navbar-wagon-button:hover {
   color: $brand-color;
   transition: color 0.8s ease;
-  text-decoration: none;
+  text-decoration: none !important;
+}
+
+.navbar-wagon-button-container {
+  &:hover{
+    text-decoration: none;
+  }
 }
 
 /* Navbar dropdown menu */
