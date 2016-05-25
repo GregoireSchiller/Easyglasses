@@ -19,3 +19,7 @@
 .next-previous-buttons {
   margin-top: 20px;
 }
+
+.container-min-height {
+  min-height: calc(100vh - 70px - 83px - 60px) // 70px navbar, 83px footer, 60px padding wrapper
+}
