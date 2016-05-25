@@ -3,7 +3,7 @@ Rails.application.routes.draw do
   root to: 'pages#home'
 
   get "onboarding", to: 'pages#onboarding'
-  get "update_user_after_onboarding", to: 'users#update_user_after_onboarding'
+  patch "update_user_after_onboarding", to: 'users#update_user_after_onboarding'
 
   resources :users, only: [:show] do
     resources :reviews, only: [:create, :new, :update, :destroy, :edit]

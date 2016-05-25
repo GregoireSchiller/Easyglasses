@@ -1,0 +1,60 @@
+
+
+<h1>La view de desktop questions</h1>
+
+<div id="step_1" class="wrapper wrapper-grey">
+  <div class="container container-min-height">
+    <h2 class="text-center">Question <%= Question.find_by(position: 1).position %></h2>
+      <div class="row">
+        <div class="col-xs-offset-1 col-xs-10">
+            <div class="orientation-size text-center">
+              <div class="position">
+                <p style="transform: rotate(<%= Question.find_by(position: 1).orientation * 90 %>deg); font-size: <%= Question.find_by(position: 1).size * 60 %>px; text-align: center">E</p>
+              </div>
+            </div>
+        </div>
+      </div>
+  </div>
+</div>
+
+<% @questions.each do |question| %>
+  <% if question.position > 1 %>
+
+  <div id="step_<%= question.position %>" class="wrapper wrapper-grey hidden">
+    <div class="container container-min-height">
+      <h2 class="text-center">Question <%= question.position %></h2>
+        <div class="row">
+          <div class="col-xs-offset-1 col-xs-10">
+            <div class="orientation-size text-center">
+              <div class="position">
+                <p style="transform: rotate(<%= question.orientation * 90 %>deg); font-size: <%= question.size * 60 %>px; text-align: center">E</p>
+              </div>
+            </div>
+          </div>
+        </div>
+    </div>
+  </div>
+
+  <% end %>
+<% end %>
+
+<% content_for(:after_js) do %>
+  <script type="text/javascript">
+    $(document).ready(function() {
+      Pusher.logToConsole = true;
+      var pusher = new Pusher('ebfab9dd09c2e4eacb61', {
+        encrypted: true,
+        app_id: '210298',
+      });
+
+      var channel = pusher.subscribe('my-channel');
+      channel.bind('new_question', function(data) {
+        var i = data.message;
+        $('#step_' + i ).addClass('hidden');
+        var j = parseFloat(data.message) + 1;
+        $('#step_'+ j).removeClass('hidden');
+        console.log(j)
+      });
+    });
+  </script>
+<% end %>
