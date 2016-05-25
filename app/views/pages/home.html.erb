@@ -2,7 +2,19 @@
   <div class="banner-content">
     <h1>EasyGlasses</h1>
     <p>Free online optical exam</p>
-    <a class="btn btn-primary btn-lg banner-button">Test your sight!</a>
+    <% if current_user != nil %>
+      <%= link_to onboarding_path do %>
+        <div id ="button-home" class="btn btn-primary btn-lg">
+          Test you sight!
+        </div>
+      <% end %>
+    <% else %>
+      <%= link_to new_user_registration_path do %>
+        <div id ="button-home" class="btn btn-primary btn-lg">
+          Test you sight!
+        </div>
+      <% end %>
+    <% end %>
   </div>
 </div>
 
