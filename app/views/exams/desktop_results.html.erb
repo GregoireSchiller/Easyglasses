@@ -1,1 +1,29 @@
-<h1>La view de desktop questions</h1>
+<div class="wrapper wrapper-grey text-center" id="wrapper_desktop_results">
+  <h1>The test is over. Please find your results hereafter.</h1>
+  <div class="container" style="margin-top: 80px;">
+    <div class="row">
+      <div class="col-xs-offset-3 col-xs-6">
+        <p><%= @exam.score_total %></p>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-xs-6">
+        <p>Left eye</p>
+      </div>
+      <div class="col-xs-6">
+        <p>Right eye</p>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-xs-6">
+        <p><%= @exam.score_left %></p>
+      </div>
+      <div class="col-xs-6">
+        <p><%= @exam.score_right %></p>
+      </div>
+    </div>
+    <div class="row">
+      <p><%= @exam.recommendation %></p>
+    </div>
+  </div>
+</div>

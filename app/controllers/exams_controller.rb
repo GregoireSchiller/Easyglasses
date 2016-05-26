@@ -47,7 +47,8 @@ class ExamsController < ApplicationController
   end
 
   def mobile_results
-
+    @skip_footer = true
+    @skip_navbar = true
   end
 
   private
