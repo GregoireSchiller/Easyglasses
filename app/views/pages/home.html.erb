@@ -3,7 +3,7 @@
     <h1>EasyGlasses</h1>
     <p>Free online optical exam</p>
     <% if current_user != nil %>
-      <%= link_to onboarding_path do %>
+      <%= link_to exams_path, method: "post" do %>
         <div id ="button-home" class="btn btn-primary btn-lg">
           Test you sight!
         </div>

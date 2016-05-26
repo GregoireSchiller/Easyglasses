@@ -2,7 +2,6 @@ Rails.application.routes.draw do
   devise_for :users
   root to: 'pages#home'
 
-  get "onboarding", to: 'pages#onboarding'
   patch "update_user_after_onboarding", to: 'users#update_user_after_onboarding'
 
   resources :users, only: [:show] do
