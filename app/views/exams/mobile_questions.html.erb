@@ -1,8 +1,9 @@
 
 <div class="wrapper wrapper-grey">
-  <div class="container container-min-height text-center">
+  <div class="container container-min-height-without-footer text-center">
     <div class="row">
       <div class="col-xs-offset-1 col-xs-10">
+        <p style="font-size: 20px; margin-bottom: 50px">Select the object you see.</p>
         <div class="flexbox">
           <div class="flex-item">
             <%= link_to user_answers_path(:question_position => (Exam.find(params[:id]).user_answers.count + 1), :answered_orientation => 1), method: :post, class: "mobile-button flexbox" do %>
@@ -31,6 +32,7 @@
             <% end %>
           </div>
         </div>
+      <%= link_to "Can't tell", user_answers_path(:question_position => (Exam.find(params[:id]).user_answers.count + 1), :answered_orientation => 0), method: :post, class: "btn btn-primary" %>
     </div>
   </div>
 </div>

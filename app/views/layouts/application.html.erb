@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html>
-  <head>
     <link href='https://fonts.googleapis.com/css?family=Roboto:400,100,300,300italic,700' rel='stylesheet' type='text/css'>
     <script src="http://js.pusher.com/2.0/pusher.min.js"></script>
     <title>TODO</title>
@@ -12,10 +11,10 @@
   </head>
   <body>
     <div class="global-wrapper">
-      <%= render 'shared/navbar' %>
+      <%= render 'shared/navbar' unless @skip_navbar %>
       <%= render 'shared/flashes' %>
       <%= yield %>
-      <%= render 'shared/footer' %>
+      <%= render 'shared/footer' unless @skip_footer%>
       <%= javascript_include_tag 'application' %>
       <%= yield(:after_js) %>
     </div>
