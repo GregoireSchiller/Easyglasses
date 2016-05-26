@@ -8,6 +8,10 @@ class UserAnswersController < ApplicationController
     @user_answer.answered_orientation = params[:answered_orientation].to_i
     @user_answer.save
     PusherClient.get.trigger('my-channel', 'new_question', message: params[:question_position])
-    redirect_to :back
+    if Exam.find(params[:id]).user_answers.count < 3
+      redirect_to :back
+    else
+      redirect_to mobile_results_exam_path(params[:id])
+    end
   end
 end

@@ -126,7 +126,11 @@
             <div id="onboarding-previous-8" class="btn btn-primary"><strong>Previous</strong></div>
           </div>
           <div class="col-xs-6">
-            <div id="onboarding-next-8" class="btn btn-primary"><strong>Start EasyGlasses exam!</strong></div>
+            <div class="btn btn-primary">
+              <%= link_to mobile_questions_exam_path(params[:id]) do %>
+                <strong style="color:white">Start!</strong>
+              <% end %>
+            </div>
           </div>
         </div>
       </div>

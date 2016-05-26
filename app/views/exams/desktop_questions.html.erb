@@ -48,10 +48,13 @@
       var channel = pusher.subscribe('my-channel');
       channel.bind('new_question', function(data) {
         var i = data.message;
-        $('#step_' + i ).addClass('hidden');
-        var j = parseFloat(data.message) + 1;
-        $('#step_'+ j).removeClass('hidden');
-        console.log(j)
+        if (i === '3') {
+          window.location = "<%= root_url + desktop_results_exam_path(params[:id]) %>" ;
+        } else {
+          $('#step_' + i ).addClass('hidden');
+          var j = parseFloat(data.message) + 1;
+          $('#step_'+ j).removeClass('hidden');
+        }
       });
     });
   </script>
