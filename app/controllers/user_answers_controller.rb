@@ -7,7 +7,7 @@ class UserAnswersController < ApplicationController
     @user_answer.question = Question.find_by(position: params[:question_position].to_i)
     @user_answer.answered_orientation = params[:answered_orientation].to_i
     @user_answer.save
-    PusherClient.get.trigger('my-channel', 'new_question', message: params[:question_position])
+    PusherClient.get.trigger('my-channel', 'new_question', { question_position: params[:question_position], exam_number: params[:id] })
     if Exam.find(params[:id]).user_answers.count < 20
       redirect_to :back
     else

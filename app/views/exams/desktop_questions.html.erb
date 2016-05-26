@@ -7,7 +7,7 @@
         <div class="col-xs-offset-1 col-xs-10">
             <div class="orientation-size text-center">
               <div class="position">
-                <p style="transform: rotate(<%= Question.find_by(position: 1).orientation * 90 %>deg); font-size: <%= Question.find_by(position: 1).size * 60 %>px; text-align: center">E</p>
+                <p style="transform: rotate(<%= Question.find_by(position: 1).orientation * 90 %>deg); font-size: <%= Question.find_by(position: 1).size %>px; text-align: center">E</p>
               </div>
             </div>
         </div>
@@ -25,7 +25,7 @@
           <div class="col-xs-offset-1 col-xs-10">
             <div class="orientation-size text-center">
               <div class="position">
-                <p style="transform: rotate(<%= question.orientation * 90 %>deg); font-size: <%= question.size * 60 %>px; text-align: center">E</p>
+                <p style="transform: rotate(<%= question.orientation * 90 %>deg); font-size: <%= question.size %>px; text-align: center">E</p>
               </div>
             </div>
           </div>
@@ -47,13 +47,15 @@
 
       var channel = pusher.subscribe('my-channel');
       channel.bind('new_question', function(data) {
-        var i = data.message;
-        if (i === '20') {
-          window.location = "<%= root_url + desktop_results_exam_path(params[:id]) %>" ;
-        } else {
-          $('#step_' + i ).addClass('hidden');
-          var j = parseFloat(data.message) + 1;
-          $('#step_'+ j).removeClass('hidden');
+        if (parseFloat(data.exam_number) === <%= params[:id] %> ) {
+          var i = data.question_position;
+          if (i === '20') {
+            window.location = "<%= root_url + desktop_results_exam_path(params[:id]) %>" ;
+          } else {
+            $('#step_' + i ).addClass('hidden');
+            var j = parseFloat(data.question_position) + 1;
+            $('#step_'+ j).removeClass('hidden');
+          }
         }
       });
     });
