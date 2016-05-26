@@ -48,7 +48,7 @@
       var channel = pusher.subscribe('my-channel');
       channel.bind('new_question', function(data) {
         var i = data.message;
-        if (i === '3') {
+        if (i === '20') {
           window.location = "<%= root_url + desktop_results_exam_path(params[:id]) %>" ;
         } else {
           $('#step_' + i ).addClass('hidden');
