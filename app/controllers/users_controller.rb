@@ -7,7 +7,8 @@ class UsersController < ApplicationController
   def update_user_after_onboarding
     @user = current_user
     @user.update(user_params)
-    redirect_to root_path
+    @exam = Exam.find(params[:user][:exam_id].to_i)
+    redirect_to desktop_questions_exam_path(@exam)
   end
 
   private

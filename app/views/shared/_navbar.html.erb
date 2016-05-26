@@ -43,7 +43,7 @@
 
     <!-- Button (call-to-action) -->
     <% if current_user != nil %>
-      <%= link_to onboarding_path, class: "navbar-wagon-button-container" do %>
+      <%= link_to exams_path, method: "post", class: "navbar-wagon-button-container" do %>
         <div class="navbar-wagon-item navbar-wagon-button">
           Test you sight!
         </div>

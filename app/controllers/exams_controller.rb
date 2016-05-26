@@ -1,6 +1,11 @@
 class ExamsController < ApplicationController
   def create
-
+    @exam = Exam.new
+    @user = current_user
+    @exam.user = @user
+    @exam.exam_date = Date.today
+    @exam.save
+    redirect_to desktop_onboarding_exam_path(@exam)
   end
 
   def score
@@ -8,7 +13,8 @@ class ExamsController < ApplicationController
   end
 
   def desktop_onboarding
-
+    @user = current_user
+    @exam = Exam.find(params[:id])
   end
 
   def desktop_questions

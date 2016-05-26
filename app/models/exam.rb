@@ -4,5 +4,4 @@ class Exam < ActiveRecord::Base
   has_many :questions, through: :user_answers
   validates :exam_date, presence: true
   validates :user, presence: true
-  validates :user, uniqueness: true
 end
