@@ -1,7 +1,7 @@
 class UsersController < ApplicationController
   def show
     @user = current_user
-    @review = Review.new
+    @review = current_user.review.nil? ? Review.new : current_user.review
   end
 
   def update_user_after_onboarding
