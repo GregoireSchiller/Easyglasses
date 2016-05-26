@@ -19,6 +19,7 @@ gem 'simple_form'
 gem 'autoprefixer-rails'
 
 gem 'pusher'
+gem 'twilio-ruby', '~> 4.11.1'
 
 group :development, :test do
   gem 'binding_of_caller'
