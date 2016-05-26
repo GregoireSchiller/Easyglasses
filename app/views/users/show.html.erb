@@ -27,19 +27,20 @@
     </div>
 
     <div class="col-xs-12 col-sm-6 col-md-4">
-      <% if @user.review == nil %>
-        <div class="fixed-item">
-          <h4>Give us a feedback</h4>
-          <%= simple_form_for [@user, @review] do |f| %>
-            <div><%= f.input :rating, label: false, :collection => 1..5, include_blank: "Give a mark" %></div>
-            <div><%= f.input :description, label: false, hint: '5 words min - 100 words max', input_html: { placeholder: "Please detail your feedback" } %></div>
-            <%= f.input :user_id, :as => :hidden, :input_html => { :value => @user.id } %>
-            <div class="text-center"> <%= f.button :submit, "Submit rating", class: "btn btn-primary" %> </div>
-          <% end %>
-        </div>
-      <% else %>
 
-        <div class="card fixed-item">
+      <div class="fixed-item hidden" id="review_form">
+        <h4>Give us a feedback</h4>
+        <%= simple_form_for([@user, @review]) do |f| %>
+          <div><%= f.input :rating, label: false, :collection => 1..5, include_blank: "Give a mark" %></div>
+          <div><%= f.input :description, label: false, hint: '5 words min - 100 words max', input_html: { placeholder: "Please detail your feedback" } %></div>
+          <%= f.input :user_id, :as => :hidden, :input_html => { :value => @user.id } %>
+          <div class="text-center"> <%= f.button :submit, "Submit rating", class: "btn btn-primary" %> </div>
+        <% end %>
+      </div>
+
+      <div class="row">
+        <% if !@user.review.nil? %>
+        <div class="card fixed-item hidden" id="review_card">
           <div class="card_title">Your feedback on the website</div>
           <div class="rating">
             <% @user.review.rating.times do %>
@@ -55,10 +56,49 @@
           </div>
           <a class="card-link" href="#" ></a>
         </div>
+      </div>
 
-      <% end %>
+
+      <div class="row flexbox">
+        <% if @user == current_user %>
+          <div class="hidden flex-item" id="delete_button"><%= link_to fa_icon('trash-o'), user_review_path(@user, @review), method: :delete, style: "color: #D44950; font-size: 30px;" %></div>
+        <% end %>
+
+        <% if @user == current_user %>
+          <div class="hidden flex-item" style="cursor: pointer" id="edit_button">
+            <i class="fa fa-pencil" aria-hidden="true" style="color: grey; font-size: 30px;"></i>
+          </div>
+        <% end %>
+      </div>
+
+        <% end %>
 
     </div>
   </div>
 </div>
 
+<%= content_for :after_js do %>
+  <script>
+    var no_review = "<%= @review.id.nil? %>"
+    console.log("test: " + no_review)
+    if (no_review == "true") {
+      console.log("no review");
+      $("#review_form").removeClass("hidden");
+    }
+    else {
+      console.log("review");
+      $("#review_card").removeClass("hidden");
+      $("#delete_button").removeClass("hidden");
+      $("#edit_button").removeClass("hidden");
+    }
+    $('#edit_button').click(function(){
+      $("#review_card").addClass("hidden");
+      $("#review_form").removeClass("hidden");
+      $("#delete_button").addClass("hidden");
+      $("#edit_button").addClass("hidden");
+    })
+
+
+  </script>
+
+<% end %>

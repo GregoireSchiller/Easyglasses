@@ -1,4 +1,5 @@
 class ReviewsController < ApplicationController
+  before_action :set_review, only: [:edit, :update, :destroy]
 
   def new
     @user = current_user
@@ -16,21 +17,26 @@ class ReviewsController < ApplicationController
   end
 
   def edit
-
   end
 
   def update
-
+    @review.update(review_params)
+    redirect_to user_path(current_user)
   end
 
   def destroy
-
+    @review.destroy
+    redirect_to user_path(current_user)
   end
 
   private
 
   def review_params
     params.require(:review).permit(:rating, :description, :user_id)
+  end
+
+  def set_review
+    @review = Review.find(params[:id])
   end
 
 end
