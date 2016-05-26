@@ -1,4 +1,37 @@
-<%= link_to "E", user_answers_path(:question_position => (Exam.find(params[:id]).user_answers.count + 1), :answered_orientation => 1), method: :post, style:"transform: rotate(180deg); display: inline-block" %>
-<%= link_to "Response 2", user_answers_path(:question_position => (Exam.find(params[:id]).user_answers.count + 1), :answered_orientation => 2), method: :post %>
-<%= link_to "Response 3", user_answers_path(:question_position => (Exam.find(params[:id]).user_answers.count + 1), :answered_orientation => 3), method: :post %>
-<%= link_to "Response 4", user_answers_path(:question_position => (Exam.find(params[:id]).user_answers.count + 1), :answered_orientation => 4), method: :post %>
+
+<div class="wrapper wrapper-grey">
+  <div class="container container-min-height text-center">
+    <div class="row">
+      <div class="col-xs-offset-1 col-xs-10">
+        <div class="flexbox">
+          <div class="flex-item">
+            <%= link_to user_answers_path(:question_position => (Exam.find(params[:id]).user_answers.count + 1), :answered_orientation => 1), method: :post, class: "mobile-button flexbox" do %>
+              <div style="transform: rotate(0deg)">
+                E
+              </div>
+            <% end %>
+          </div>
+          <div class="flex-item vertical-items">
+            <%= link_to user_answers_path(:question_position => (Exam.find(params[:id]).user_answers.count + 1), :answered_orientation => 2), method: :post, class: "mobile-button flexbox" do %>
+              <div style="transform: rotate(90deg)">
+                E
+              </div>
+            <% end %>
+            <%= link_to user_answers_path(:question_position => (Exam.find(params[:id]).user_answers.count + 1), :answered_orientation => 4), method: :post, class: "mobile-button flexbox" do %>
+              <div style="transform: rotate(270deg)">
+                E
+              </div>
+            <% end %>
+          </div>
+          <div class="flex-item">
+            <%= link_to user_answers_path(:question_position => (Exam.find(params[:id]).user_answers.count + 1), :answered_orientation => 3), method: :post, class: "mobile-button flexbox" do %>
+              <div style="transform: rotate(180deg)">
+                E
+              </div>
+            <% end %>
+          </div>
+        </div>
+    </div>
+  </div>
+</div>
+</div>
