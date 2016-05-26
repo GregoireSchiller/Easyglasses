@@ -47,8 +47,6 @@
 
       var channel = pusher.subscribe('my-channel');
       channel.bind('new_question', function(data) {
-        console.log(data.exam_number);
-        console.log(data.question_position);
         if (parseFloat(data.exam_number) === <%= params[:id] %> ) {
           var i = data.question_position;
           if (i === '20') {
