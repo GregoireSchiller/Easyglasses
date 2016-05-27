@@ -1,9 +1,15 @@
-.mobile .fa-question-circle {
+.mobile-navbar .fa-question-circle {
   color: $blue;
   font-size: 3em;
 }
 
-.mobile {
+.mobile-navbar {
+  transition: all 0.3s ease;
+  display: flex;
+  height: 70px;
+  padding: 0px 30px;
+  align-items: center;
+  justify-content: space-between;
   background-color: #DBE2EF;
   padding: 10px;
 }
