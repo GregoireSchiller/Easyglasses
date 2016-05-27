@@ -1,29 +1,25 @@
 <div class="wrapper wrapper-grey text-center" id="wrapper_desktop_results">
   <h1>The test is over. Please find your results hereafter.</h1>
-  <div class="container" style="margin-top: 80px;">
+  <div class="container" style="margin-top: 40px;">
     <div class="row">
       <div class="col-xs-offset-3 col-xs-6">
+        <h3><strong>Total score</strong></h3>
         <h3><%= @exam.score_total %> / 20</h3>
       </div>
     </div>
     <div class="row">
       <div class="col-xs-6">
-        <h3>Left eye</h3>
-      </div>
-      <div class="col-xs-6">
-        <h3>Right eye</h3>
-      </div>
-    </div>
-    <div class="row">
-      <div class="col-xs-6">
+        <h3><strong>Left eye</strong></h3>
         <h3><%= @exam.score_left %> / 10</h3>
       </div>
       <div class="col-xs-6">
+        <h3><strong>Right score</strong></h3>
         <h3><%= @exam.score_right %> / 10</h3>
       </div>
     </div>
     <div class="row">
-      <h3><%= @exam.recommendation %></h3>
+      <h2><strong> <%= @exam.recommendation %></strong></h2>
     </div>
+    <%= link_to "My profile", user_path(@exam.user_id), class: "btn btn-lg btn-primary" %>
   </div>
 </div>
