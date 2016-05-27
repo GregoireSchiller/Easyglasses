@@ -1,15 +1,14 @@
 <div id="step_1" class="wrapper wrapper-grey">
   <div class="container container-min-height">
-    <!-- <h2 class="text-center">Question <%= Question.find_by(position: 1).position %></h2> -->
-      <div class="row">
-        <div class="col-xs-offset-1 col-xs-10">
-            <div class="orientation-size text-center">
-              <div class="position">
-                <p style="transform: rotate(<%= Question.find_by(position: 1).orientation * 90 %>deg); font-size: <%= Question.find_by(position: 1).size %>px; text-align: center">E</p>
-              </div>
+    <div class="row">
+      <div class="col-xs-offset-1 col-xs-10">
+          <div class="orientation-size text-center">
+            <div class="position">
+              <p style="transform: rotate(<%= Question.find_by(position: 1).orientation * 90 %>deg); font-size: <%= Question.find_by(position: 1).size %>px; text-align: center">E</p>
             </div>
-        </div>
+          </div>
       </div>
+    </div>
   </div>
 </div>
 
@@ -18,16 +17,15 @@
 
   <div id="step_<%= question.position %>" class="wrapper wrapper-grey hidden">
     <div class="container container-min-height">
-      <!-- <h2 class="text-center">Question <%= question.position %></h2> -->
-        <div class="row">
-          <div class="col-xs-offset-1 col-xs-10">
-            <div class="orientation-size text-center">
-              <div class="position">
-                <p style="transform: rotate(<%= question.orientation * 90 %>deg); font-size: <%= question.size %>px; text-align: center">E</p>
-              </div>
+      <div class="row">
+        <div class="col-xs-offset-1 col-xs-10">
+          <div class="orientation-size text-center">
+            <div class="position">
+              <p style="transform: rotate(<%= question.orientation * 90 %>deg); font-size: <%= question.size %>px; text-align: center">E</p>
             </div>
           </div>
         </div>
+      </div>
     </div>
   </div>
 
