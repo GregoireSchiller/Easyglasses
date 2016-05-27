@@ -2,9 +2,10 @@
  * Fonts
  * ------------------------------------- */
 // Google fonts
-@import url("https://fonts.googleapis.com/css?family=Roboto:100,400,300,700|Roboto:400,100,300,700");
-$base-font: "Roboto", "Helvetica", "sans-serif";
-$header-font: "Roboto", "Helvetica", "sans-serif";
+
+@import url(https://fonts.googleapis.com/css?family=Muli:400,300,300italic,400italic);
+$base-font: "Muli" ;
+$header-font: "Muli";
 
 // Local fonts (uncomment following lines)
 // @font-face {
