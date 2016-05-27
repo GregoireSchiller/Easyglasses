@@ -1,4 +1,6 @@
 class ExamsController < ApplicationController
+  skip_before_action :authenticate_user!, only [:mobile_onboarding, :mobile_questions]
+
   def create
     @exam = Exam.new
     @user = current_user
