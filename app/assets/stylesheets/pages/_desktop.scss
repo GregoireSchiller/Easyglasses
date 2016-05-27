@@ -1,9 +1,12 @@
 .position {
-  height: calc(100vh - 70px - 83px - 77px - 60px);
+  height: calc(100vh - 70px - 83px - 60px);
   width: 100%;
   text-align: center;
   display: flex;
   align-items: center;
   justify-content: center;
+  p {
+    line-height: 1em;
+  }
 }
 
