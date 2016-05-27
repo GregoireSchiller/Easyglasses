@@ -42,13 +42,11 @@ class ExamsController < ApplicationController
   end
 
   def mobile_questions
-    @skip_footer = true
-    @skip_navbar = true
+    render layout: "mobile_onboarding"
   end
 
   def mobile_results
-    @skip_footer = true
-    @skip_navbar = true
+    render layout: "mobile_onboarding"
   end
 
   private
