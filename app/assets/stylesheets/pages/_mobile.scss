@@ -6,7 +6,12 @@
   font-size: 50px;
   height: 100px;
   width: 100px;
-  margin-bottom: 100px
+  margin-bottom: 100px;
+  &:hover,
+  &:active,
+  &:focus {
+    text-decoration: none;
+  }
 }
 
 .flexbox {

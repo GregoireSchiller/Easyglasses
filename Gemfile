@@ -17,6 +17,7 @@ gem 'font-awesome-sass'
 gem "font-awesome-rails"
 gem 'simple_form'
 gem 'autoprefixer-rails'
+gem 'jquery-ui-rails'
 
 gem 'pusher'
 gem 'twilio-ruby', '~> 4.11.1'
