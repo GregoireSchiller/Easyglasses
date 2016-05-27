@@ -1,58 +1,57 @@
+<div class="row">
 
-    <div class="row">
+  <div id="slide-1" class="hidden">
+    <%= image_tag "cover-your-left-eye.png", { class: 'mobile-picture' }%>
+    <h3>Gently cover your right eye now.</h3>
+    <div id="next-1" class="btn btn-primary"><strong>Next</strong></div>
+  </div>
 
-          <div id="slide-1" class="hidden">
-            <%= image_tag "cover-your-left-eye.png", { class: 'mobile-picture' }%>
-            <h3>Gently cover your right eye now.</h3>
-            <div id="next-1" class="btn btn-primary"><strong>Next</strong></div>
+  <div id="slide-2" class="hidden">
+    <p style="font-size: 20px; margin-bottom: 30px">Select the object you see.</p>
+    <div class="flexbox">
+      <div class="flex-item">
+        <%= link_to user_answers_path(:question_position => (Exam.find(params[:id]).user_answers.count + 1), :answered_orientation => 4), method: :post, class: "mobile-button flexbox" do %>
+          <div style="transform: rotate(0deg)">
+            E
           </div>
-
-          <div id="slide-2" class="hidden">
-            <p style="font-size: 20px; margin-bottom: 50px">Select the object you see.</p>
-            <div class="flexbox">
-              <div class="flex-item">
-                <%= link_to user_answers_path(:question_position => (Exam.find(params[:id]).user_answers.count + 1), :answered_orientation => 4), method: :post, class: "mobile-button flexbox" do %>
-                  <div style="transform: rotate(0deg)">
-                    E
-                  </div>
-                <% end %>
-              </div>
-              <div class="flex-item vertical-items">
-                <%= link_to user_answers_path(:question_position => (Exam.find(params[:id]).user_answers.count + 1), :answered_orientation => 1), method: :post, class: "mobile-button flexbox" do %>
-                  <div style="transform: rotate(90deg)">
-                    E
-                  </div>
-                <% end %>
-                <%= link_to user_answers_path(:question_position => (Exam.find(params[:id]).user_answers.count + 1), :answered_orientation => 3), method: :post, class: "mobile-button flexbox" do %>
-                  <div style="transform: rotate(270deg)">
-                    E
-                  </div>
-                <% end %>
-              </div>
-              <div class="flex-item">
-                <%= link_to user_answers_path(:question_position => (Exam.find(params[:id]).user_answers.count + 1), :answered_orientation => 2), method: :post, class: "mobile-button flexbox" do %>
-                  <div style="transform: rotate(180deg)">
-                    E
-                  </div>
-                <% end %>
-              </div>
-            </div>
-          <%= link_to "Can't tell", user_answers_path(:question_position => (Exam.find(params[:id]).user_answers.count + 1), :answered_orientation => 0), method: :post, class: "btn btn-primary" %>
+        <% end %>
+      </div>
+      <div class="flex-item vertical-items">
+        <%= link_to user_answers_path(:question_position => (Exam.find(params[:id]).user_answers.count + 1), :answered_orientation => 1), method: :post, class: "mobile-button flexbox" do %>
+          <div style="transform: rotate(90deg)">
+            E
           </div>
-
-          <div id="slide-3" class="hidden">
-            <h2>Uncover and relax your eyes.</h3>
-            <h3 style="padding: 30px 0px">You've completed your right eye visual acuity assessment.</h4>
-            <div id="next-3" class="btn btn-primary"><strong>Continue</strong></div>
+        <% end %>
+        <%= link_to user_answers_path(:question_position => (Exam.find(params[:id]).user_answers.count + 1), :answered_orientation => 3), method: :post, class: "mobile-button flexbox" do %>
+          <div style="transform: rotate(270deg)">
+            E
           </div>
-
-          <div id="slide-4" class="hidden">
-            <%= image_tag "cover-your-right-eye.png", {class: 'mobile-picture' } %>
-            <h3>Gently cover your left eye now.</h3>
-            <div id="next-4" class="btn btn-primary"><strong>Next</strong></div>
+        <% end %>
+      </div>
+      <div class="flex-item">
+        <%= link_to user_answers_path(:question_position => (Exam.find(params[:id]).user_answers.count + 1), :answered_orientation => 2), method: :post, class: "mobile-button flexbox" do %>
+          <div style="transform: rotate(180deg)">
+            E
           </div>
-
+        <% end %>
+      </div>
     </div>
+  <%= link_to "Can't tell", user_answers_path(:question_position => (Exam.find(params[:id]).user_answers.count + 1), :answered_orientation => 0), method: :post, class: "btn btn-primary", style: "margin-top: -80px" %>
+  </div>
+
+  <div id="slide-3" class="hidden">
+    <h2>Uncover and relax your eyes.</h3>
+    <h3 style="padding: 30px 0px">You've completed your right eye visual acuity assessment.</h4>
+    <div id="next-3" class="btn btn-primary"><strong>Continue</strong></div>
+  </div>
+
+  <div id="slide-4" class="hidden">
+    <%= image_tag "cover-your-right-eye.png", {class: 'mobile-picture' } %>
+    <h3>Gently cover your left eye now.</h3>
+    <div id="next-4" class="btn btn-primary"><strong>Next</strong></div>
+  </div>
+
+</div>
 
 
 <% content_for(:after_js) do %>
