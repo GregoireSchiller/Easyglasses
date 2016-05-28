@@ -4,6 +4,17 @@ class UsersController < ApplicationController
     @review = current_user.review.nil? ? Review.new : current_user.review
   end
 
+  def update_user_after_onboarding_eligible
+    @user = current_user
+    @user.update(user_params)
+    @exam = Exam.find(params[:user][:exam_id].to_i)
+    if @user.pregnant == false && @user.chronic_health_conditions == false && @user.current_pain == false && @user.eye_surgery == false
+      redirect_to desktop_onboarding_exam_path(@exam)
+    else
+      redirect_to root_path
+    end
+  end
+
   def update_user_after_onboarding
     @user = current_user
     @user.update(user_params)
