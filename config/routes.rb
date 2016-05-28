@@ -3,6 +3,7 @@ Rails.application.routes.draw do
   root to: 'pages#home'
 
   patch "update_user_after_onboarding", to: 'users#update_user_after_onboarding'
+  patch "update_user_after_onboarding_eligible", to: 'users#update_user_after_onboarding_eligible'
 
   resources :users, only: [:show] do
     resources :reviews, only: [:create, :new, :update, :destroy, :edit]
@@ -10,6 +11,7 @@ Rails.application.routes.draw do
 
 resources :exams, only: [:create] do
   member do
+    get 'desktop_onboading_eligible' => 'exams#desktop_onboarding_eligible', as: 'desktop_onboarding_eligible'
     get 'desktop_onboading' => 'exams#desktop_onboarding', as: 'desktop_onboarding'
     get 'desktop_questions' => 'exams#desktop_questions', as: 'desktop_questions'
     get 'desktop_results' => 'exams#desktop_results', as: 'desktop_results'

@@ -6,7 +6,12 @@ class ExamsController < ApplicationController
     @exam.user = @user
     @exam.exam_date = Date.today
     @exam.save
-    redirect_to desktop_onboarding_exam_path(@exam)
+    redirect_to desktop_onboarding_eligible_exam_path(@exam)
+  end
+
+  def desktop_onboarding_eligible
+    @user = current_user
+    @exam = Exam.find(params[:id])
   end
 
   def desktop_onboarding
