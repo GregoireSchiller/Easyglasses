@@ -11,8 +11,12 @@ class UsersController < ApplicationController
     if @user.pregnant == false && @user.chronic_health_conditions == false && @user.current_pain == false && @user.eye_surgery == false
       redirect_to desktop_onboarding_exam_path(@exam)
     else
-      redirect_to root_path
+      redirect_to unable_user_path
     end
+  end
+
+  def unable_user
+    @user = current_user
   end
 
   def update_user_after_onboarding
