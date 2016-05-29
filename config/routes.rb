@@ -11,8 +11,8 @@ Rails.application.routes.draw do
 
 resources :exams, only: [:create] do
   member do
-    get 'desktop_onboading_eligible' => 'exams#desktop_onboarding_eligible', as: 'desktop_onboarding_eligible'
-    get 'desktop_onboading' => 'exams#desktop_onboarding', as: 'desktop_onboarding'
+    get 'desktop_onboarding_eligible' => 'exams#desktop_onboarding_eligible', as: 'desktop_onboarding_eligible'
+    get 'desktop_onboarding' => 'exams#desktop_onboarding', as: 'desktop_onboarding'
     get 'desktop_questions' => 'exams#desktop_questions', as: 'desktop_questions'
     get 'desktop_results' => 'exams#desktop_results', as: 'desktop_results'
     get 'mobile_onboarding' => 'exams#mobile_onboarding', as: 'mobile_onboarding'

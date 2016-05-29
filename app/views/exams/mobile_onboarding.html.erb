@@ -52,7 +52,7 @@
   <div class="row">
     <div class="col-xs-12">
       <div class="onboarding-instructions">
-       <p>Removing your shoes is very important for accuracy. If you have not removed your shoes, please do so now before selecting "continue"</p>
+       <p>Removing your shoes is very important for accuracy. If you have not removed your shoes, please do so now before selecting "next"</p>
         <div class="row">
           <div class="col-xs-6">
             <div id="onboarding-previous-4" class="btn btn-primary"><strong>Previous</strong></div>
@@ -69,6 +69,7 @@
   <div class="row">
     <div class="col-xs-12">
       <div class="onboarding-instructions">
+        <%= image_tag "onboarding2.PNG", {class: 'mobile-picture' } %>
         <p>First, stand with your back against your computer as pictured here. Make sure your shoes are off.</p>
         <div class="row">
           <div class="col-xs-6">
@@ -86,7 +87,8 @@
   <div class="row">
     <div class="col-xs-12">
       <div class="onboarding-instructions">
-        <p>Next, measure 11 heel-to-toe steps away from your computer. Step heel-to-toe as pictured here.</p>
+        <%= image_tag "onboarding3.PNG", {class: 'mobile-picture' } %>
+        <p>Next, measure <%= @distance.round %> heel-to-toe steps away from your computer. Step heel-to-toe as pictured here.</p>
         <div class="row">
           <div class="col-xs-6">
             <div id="onboarding-previous-6" class="btn btn-primary"><strong>Previous</strong></div>
@@ -103,7 +105,8 @@
   <div class="row">
     <div class="col-xs-12">
       <div class="onboarding-instructions">
-        <p>On your 11th step, place an object where your front toe landed</p>
+       <%= image_tag "onboarding4.PNG", {class: 'mobile-picture' } %>
+        <p>On your <%= @distance.round  %> step, place an object where your front toe landed</p>
         <div class="row">
           <div class="col-xs-6">
             <div id="onboarding-previous-7" class="btn btn-primary"><strong>Previous</strong></div>
@@ -120,6 +123,7 @@
   <div class="row">
     <div class="col-xs-12">
       <div class="onboarding-instructions">
+       <%= image_tag "onboarding5.PNG", {class: 'mobile-picture' } %>
         <p>Then, turn around and face your computer with your toes where you placed the object</p>
         <div class="row">
           <div class="col-xs-6">
