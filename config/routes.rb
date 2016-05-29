@@ -4,6 +4,7 @@ Rails.application.routes.draw do
 
   patch "update_user_after_onboarding", to: 'users#update_user_after_onboarding'
   patch "update_user_after_onboarding_eligible", to: 'users#update_user_after_onboarding_eligible'
+  get "unable_user", to: 'users#unable_user'
 
   resources :users, only: [:show] do
     resources :reviews, only: [:create, :new, :update, :destroy, :edit]

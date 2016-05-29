@@ -1,0 +1,18 @@
+<div class="wrapper wrapper-grey">
+  <div class="container container-min-height">
+    <h2 class="text-center">We're sorry <%= @user.first_name %>, you are not able to take the test.</h2>
+    <div class="row">
+      <div class="col-xs-12">
+        <% if @user.pregnant == true %>
+          <h4>The EasyGlasses online exam is not appropriate for pregnant women.</h4>
+        <% elsif @user.chronic_health_conditions == true %>
+          <h4>The EasyGlasses online exam is not appropriate for patients with chronic health conditions.</h4>
+        <% elsif @user.current_pain == true %>
+          <h4>The EasyGlasses online exam is not appropriate for patients experiencing any pain, discomfort or sudden loss of vision with their eyes.</h4>
+        <% else %>
+          <h4>The EasyGlasses online exam is not appropriate for patients experiencing any type of eye disease or who had eye surgery within the past 12 months.</h4>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>
