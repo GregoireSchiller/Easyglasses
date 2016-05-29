@@ -45,3 +45,22 @@
     </div>
   </div>
 </div>
+
+<div class="wrapper-blue text-center">
+  <h2><strong>Prescriptions from the Confort of Home</h2></strong>
+  <p>Opternative is the most convenient way to get your glasses or contacts prescription. The exam is free to take, only pay for your prescription.</p>
+  <% if current_user != nil %>
+    <%= link_to exams_path, method: "post" do %>
+      <div id ="button-home" class="btn btn-primary btn-lg">
+        Test your sight!
+      </div>
+    <% end %>
+  <% else %>
+    <%= link_to new_user_registration_path do %>
+      <div id ="button-home" class="btn btn-primary btn-lg">
+        Test your sight!
+      </div>
+    <% end %>
+  <% end %>
+
+</div>
