@@ -71,3 +71,16 @@
   max-height: calc(100vh - 282px);
   overflow: scroll;
 }
+
+
+.flexbox {
+  min-height: 175px;
+  text-align: center;
+  position: relative;
+}
+
+.flex-item {
+  position: absolute;
+  top: 76px;
+  left: 50%;
+}

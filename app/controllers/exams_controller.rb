@@ -25,6 +25,7 @@ class ExamsController < ApplicationController
 
   def desktop_results
     @exam = Exam.find(params[:id])
+    @prescription = Prescription.new
     count_left = 0
     count_right = 0
     @exam.user_answers.each_with_index do |answer, index|

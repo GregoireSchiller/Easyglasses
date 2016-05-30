@@ -21,6 +21,7 @@ resources :exams, only: [:create] do
     get 'mobile_results' => 'exams#mobile_results', as: 'mobile_results'
     resource :user_answers, only: [:create]
   end
+  resources :prescriptions, only: [:new, :create, :show]
 end
 
 end
