@@ -3,7 +3,7 @@ class ExamsController < ApplicationController
   def create
     @exam = Exam.new
     @user = current_user
-    @exam.user = @user
+    @exam.patient = @user
     @exam.exam_date = Date.today
     @exam.save
     redirect_to desktop_onboarding_eligible_exam_path(@exam)
@@ -44,7 +44,7 @@ class ExamsController < ApplicationController
   end
 
   def mobile_onboarding
-    @shoe_size = Exam.find(params[:id]).user.shoe_size
+    @shoe_size = Exam.find(params[:id]).patient.shoe_size
     @shoe_size_cm = (@shoe_size * 0.66) - 1
     @distance = 300 / @shoe_size_cm
     render layout: "mobile_onboarding"

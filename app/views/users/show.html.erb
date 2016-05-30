@@ -28,7 +28,7 @@
         <div class="scroll_fix">
         <h3><strong>Your record history</strong></h3>
         <% vision_test_number = 1 %>
-          <% current_user.exams.each do |exam| %>
+          <% current_user.patient_exams.each do |exam| %>
             <div class="card">
               <div class="card_title">Vision test n°<%= vision_test_number %></div>
               <% vision_test_number += 1 %>
@@ -42,6 +42,7 @@
               </div>
               <a class="card-link" href="#" ></a>
             </div>
+            <%= link_to "Request prescription", edit_user_registration_path, class: "btn btn-primary" %>
             <hr>
           <% end %>
         </div>

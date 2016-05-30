@@ -5,5 +5,5 @@ class Exam < ActiveRecord::Base
   has_many :user_answers
   has_many :questions, through: :user_answers
   validates :exam_date, presence: true
-  validates :user, presence: true
+  validates :patient, presence: true
 end
