@@ -17,7 +17,6 @@
     <% end %>
   </div>
 </div>
-
 <div class="wrapper wrapper-grey">
   <div class="container">
     <h2 class="text-center" style="color: #3F72AF; padding-top:45px;"><strong>How it works</strong></h2>
@@ -41,6 +40,41 @@
         <i class="fa fa-file-text-o icon"></i>
         <h4 class="h4-steps">4. Receive your prescription</h4>
         <p>You will then receive your prescription by email and be able to get new glasses or contact lens!</p>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="wrapper-blue">
+  <div class="container text-center">
+    <div class="wrapper-blue-container">
+      <h2>Prescriptions from the Comfort of Home</h2>
+      <p>Opternative is the most convenient way to get your glasses or contacts prescription. The exam is free to take, only pay for your prescription</p>
+      <% if current_user != nil %>
+        <%= link_to "Test your sight!", exams_path, class: " navbar-wagon-button bandeau" %>
+      <% else %>
+        <%= link_to "Test your sight!", new_user_registration_path, class: " navbar-wagon-button bandeau" %>
+  <!--         <div id="bandeau" class="navbar-wagon-button">
+            Test your sight!
+          </div> -->
+      <% end %>
+    </div>
+  </div>
+</div>
+<div class="wrapper-grey">
+  <div class="container">
+    <div class="row">
+      <div class="col-xs-12 col-sm-6">
+        <div class="card-doctor">
+          <div class="card-doctor-image" style="background-image: url(<%= image_url("Boris-Paillard.jpg") %>);">
+
+          </div>
+          <div class="card-doctor-footer">
+            <p>Dr. Boris Paillard</p>
+            <div class="crd-doctor-footer-description">
+
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   </div>
