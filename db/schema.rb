@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160525103433) do
+ActiveRecord::Schema.define(version: 20160530120925) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -28,6 +28,14 @@ ActiveRecord::Schema.define(version: 20160525103433) do
   end
 
   add_index "exams", ["user_id"], name: "index_exams_on_user_id", using: :btree
+
+  create_table "prescriptions", force: :cascade do |t|
+    t.string   "description"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+    t.integer  "exam_id"
+    t.integer  "user_id"
+  end
 
   create_table "questions", force: :cascade do |t|
     t.integer  "position"
@@ -84,6 +92,7 @@ ActiveRecord::Schema.define(version: 20160525103433) do
     t.string   "gender"
     t.string   "wearing_on_now"
     t.string   "worn_in_past"
+    t.boolean  "ophtalmo"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
