@@ -17,7 +17,6 @@
     <% end %>
   </div>
 </div>
-
 <div class="wrapper wrapper-grey">
   <div class="container">
     <h2 class="text-center" style="color: #3F72AF; padding-top:45px;"><strong>How it works</strong></h2>
@@ -45,3 +44,50 @@
     </div>
   </div>
 </div>
+<div class="wrapper-blue">
+  <div class="container text-center">
+    <div class="wrapper-blue-container">
+      <h2>Prescriptions from the Comfort of Home</h2>
+      <p>Opternative is the most convenient way to get your glasses or contacts prescription. The exam is free to take, only pay for your prescription</p>
+      <% if current_user != nil %>
+        <%= link_to "Test your sight!", exams_path, class: " navbar-wagon-button bandeau" %>
+      <% else %>
+        <%= link_to "Test your sight!", new_user_registration_path, class: " navbar-wagon-button bandeau" %>
+  <!--         <div id="bandeau" class="navbar-wagon-button">
+            Test your sight!
+          </div> -->
+      <% end %>
+    </div>
+  </div>
+</div>
+
+<div class="wrapper-grey">
+  <div class="container">
+    <div class="row">
+      <div class="col-xs-12 col-sm-6">
+        <div class="card-doctor">
+          <div class="card-doctor-image" style="background-image: url(<%= image_url("Boris-Paillard.jpg") %>);"></div>
+          <div class="card-doctor-footer text-center">
+            <p><strong>Dr. Boris Paillard</strong></p>
+          </div>
+          <div class="doctor-description">
+            <p>Dr. Paillard is a board-certified ophthalmologist with extensive expertise in refractions, cataracts, laser surgery, and glaucoma. He graduated from Paris Medical School and completed his ophthalmology residency at the University of Harvard.</p>
+          </div>
+          </div>
+      </div>
+      <div class="col-xs-12 col-sm-6">
+        <div class="card-doctor">
+          <div class="card-doctor-image" style="background-image: url(<%= image_url("romain_paillard.jpg") %>);"></div>
+          <div class="card-doctor-footer text-center">
+            <p><strong>Dr. Romain Paillard</strong></p>
+          </div>
+          <div class="doctor-description">
+            <p>Dr. Paillard is a board-certified ophthalmologist. He has extensive experience in refractions, laser surgery, and glaucoma. He attended University of Paris Medical School, followed by a fellowship in glaucoma at University of California San Diego.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
