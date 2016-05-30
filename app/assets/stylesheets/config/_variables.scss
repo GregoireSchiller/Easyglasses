@@ -4,10 +4,15 @@
 // Google fonts
 
 @import url(https://fonts.googleapis.com/css?family=Muli:400,300,300italic,400italic);
+<<<<<<< HEAD
 @import url(https://fonts.googleapis.com/css?family=Handlee);
 $base-font: "Muli" ;
 $header-font: "Muli";
 $title-font: "Handlee";
+=======
+$base-font: "Muli", "Arial", "Sans-serif" ;
+$header-font: "Muli", "Arial", "Sans-serif";
+>>>>>>> master
 
 // Local fonts (uncomment following lines)
 // @font-face {
