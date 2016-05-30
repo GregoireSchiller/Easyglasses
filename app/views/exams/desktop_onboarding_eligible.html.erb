@@ -1,37 +1,49 @@
 <%= simple_form_for @user, url: update_user_after_onboarding_eligible_path do |f| %>
   <div id="step_1" class="wrapper wrapper-grey">
     <div class="container container-min-height">
-      <h2 class="text-center">Are you eligible? Please answer these few questions.</h2>
-        <div class="row">
-          <div class="col-xs-offset-1 col-xs-10">
-            <h4 style="padding-top: 20px;">Are you currently pregnant or nursing?</h4>
-            <%= f.radio_button :pregnant, true %>
-            <%= f.label :pregnant, "Yes", value: "true"  %>
-            <br>
-            <%= f.radio_button :pregnant, false %>
-            <%= f.label :pregnant, "No", value: "false" %>
-            <h4 style="padding-top: 10px;">Do you have any of the following chronic health conditions: diabetes, heart disease, high blood pressure or migraines with visual distortions?</h4>
-            <%= f.radio_button :chronic_health_conditions, true %>
-            <%= f.label :chronic_health_conditions, "Yes", value: "true"  %>
-            <br>
-            <%= f.radio_button :chronic_health_conditions, false %>
-            <%= f.label :chronic_health_conditions, "No", value: "false" %>
-            <h4 style="padding-top: 10px;">Are you currently experiencing any pain, discomfort or sudden loss of vision with your eyes?</h4>
-            <%= f.radio_button :current_pain, true %>
-            <%= f.label :current_pain, "Yes", value: "true"  %>
-            <br>
-            <%= f.radio_button :current_pain, false %>
-            <%= f.label :current_pain, "No", value: "false" %>
-            <h4 style="padding-top: 10px;">Are you currently experiencing any type of eye disease or had eye surgery within the past 12 months?</h4>
-            <%= f.radio_button :eye_surgery, true %>
-            <%= f.label :eye_surgery, "Yes", value: "true"  %>
-            <br>
-            <%= f.radio_button :eye_surgery, false %>
-            <%= f.label :eye_surgery, "No", value: "false" %>
+      <div class="row">
+        <div class="col-xs-offset-1 col-xs-10">
+          <div class="text-center">
+            <i class= "fa fa-check-square onboarding-icon text-center"></i>
+          </div>
+          <div class="card-eligible">
+            <div class="question">
+              <h4>Please confirm you are currently not pregnant or nursing</h4>
+              <div class="toggle-btn active">
+                <input type="checkbox" checked class="cb-value" name="user[pregnant]" />
+                <span class="round-btn"></span>
+              </div>
+              <div class="break"></div>
+            </div>
+            <div class="question">
+              <h4>Please confirm you don't have any of the following chronic health conditions: diabetes, heart disease, high blood pressure or migraines with visual distortions</h4>
+              <div class="toggle-btn active">
+                <input type="checkbox" checked class="cb-value q2" name="user[chronic_health_conditions]"/>
+                <span class="round-btn"></span>
+              </div>
+              <div class="break"></div>
+            </div>
+            <div class="question">
+              <h4>Please confirm you are currently not experiencing any pain, discomfort or sudden loss of vision with your eyes</h4>
+              <div class="toggle-btn active">
+                <input type="checkbox" checked class="cb-value q3" name="user[current_pain]"/>
+                <span class="round-btn"></span>
+              </div>
+              <div class="break"></div>
+            </div>
+            <div class="question">
+              <h4>Please confirm you are currently not experiencing any type of eye disease or had eye surgery within the past 12 months</h4>
+              <div class="toggle-btn active">
+                <input type="checkbox" checked class="cb-value q4" name="user[eye_surgery]"/>
+                <span class="round-btn"></span>
+              </div>
+            </div>
           </div>
         </div>
+      </div>
+
       <div class="row next-previous-buttons">
-        <div class="col-xs-12 col-md-offset-6 col-md-6 text-center">
+        <div class="col-xs-12 col-md-offset-3 col-md-6 text-center">
           <div><%= f.input :exam_id, as: :hidden, input_html: { value: params[:id] } %></div>
           <div><%= f.submit "Submit", id: "next_1", class: "btn btn-primary btn-lg" %></div>
         </div>

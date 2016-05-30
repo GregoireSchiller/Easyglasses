@@ -36,9 +36,9 @@
   <script type="text/javascript">
     $(document).ready(function() {
       Pusher.logToConsole = true;
-      var pusher = new Pusher('ebfab9dd09c2e4eacb61', {
+      var pusher = new Pusher('<%= ENV['pusher_key'] %>', {
         encrypted: true,
-        app_id: '210298',
+        app_id: '<%= ENV['pusher_app_id'] %>',
       });
 
       var channel = pusher.subscribe('my-channel');
