@@ -1,5 +1,7 @@
 .mobile-button {
-  display: inline-block;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   background-color: #3F72AF;
   color: white;
   border-radius: 50%;
@@ -12,10 +14,6 @@
   &:focus {
     text-decoration: none;
   }
-}
-
-.flexbox {
-  align-items: center;
 }
 
 .flex-item {

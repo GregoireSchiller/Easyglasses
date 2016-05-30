@@ -1,5 +1,31 @@
+.onboarding-banner-content {
+  margin-bottom: 350px;
+  padding: 110px;
+}
+
+.banner-start-test {
+  color: white;
+  text-align: center;
+  height: calc(100vh - 70px - 83px);
+  background-size: cover !important;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
 .onboarding-icon {
   font-size: 100px;
+  transform: translateY(50%);
+  background: white;
+  height: 130px;
+  width: 130px;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: auto;
+  border: 4px solid #DBE2EF;
+  margin-top: -75px;
 }
 
 .onboarding-h2 {
@@ -36,3 +62,74 @@
   width: 400px;
   height: 250px;
 }
+
+.card-eligible {
+  background-color: white;
+  padding: 25px;
+  padding-top: 72px;
+  border-radius: 4px;
+}
+
+.card-desktop-onboarding {
+  background-color: white;
+  padding-top: 65px;
+  border-radius: 4px;
+  margin-bottom: 24px;
+}
+
+.question {
+  width: 90%;
+  margin: auto;
+  h4 {
+    font-size: 18px;
+  }
+}
+
+.break {
+  background-color: #DBE2EF;
+  height: 3px;
+  margin: 15px 0px;
+}
+
+.toggle-btn{
+  width: 80px;
+  height: 40px;
+  margin: 0px;
+  border-radius: 50px;
+  display: inline-block;
+  position: relative;
+  background : url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAyklEQVQ4T42TaxHCQAyENw5wAhLACVUAUkABOCkSwEkdhNmbpHNckzv689L98toIAKjqGcAFwElEFr5ln6ruAMwA7iLyFBM/TPDuQSrxwf6fCKBoX2UMIYGYkg8BLOnVg2RiAEexGaQQq4w9e9klcxGLLAUwgDAcihlYAR1IvZA1sz/+AAaQjXhTQQVoe2Yo3E7UQiT2ijeQdojRtClOfVKvMVyVpU594kZK9zzySWTlcNqZY9tjCsUds00+A57z1e35xzlzJjee8xf0HYp+cOZQUQAAAABJRU5ErkJggg==') no-repeat 50px center #DBE2EF;
+  cursor: pointer;
+  transition: background-color .40s ease-in-out;
+  cursor:pointer;
+  &.active{
+    background : url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAmUlEQVQ4T6WT0RWDMAhFeZs4ipu0mawZpaO4yevBc6hUIWLNd+4NeQDk5sE/PMkZwFvZywKSTxF5iUgH0C4JHGyF97IggFVSqyCFga0CvQSg70Mdwd8QSSr4sGBMcgavAgdvwQCtApvA2uKr1x7Pu++06ItrF5LXPB/CP4M0kKTwYRIDyRAOR9lJTuF0F0hOAJbKopVHOZN9ACS0UgowIx8ZAAAAAElFTkSuQmCC') no-repeat 10px center #3F72AF;
+    .round-btn{
+      left: 45px;
+    }
+  }
+  .round-btn{
+    width: 30px;
+    height: 30px;
+    background-color: #fff;
+    border-radius: 50%;
+    display: inline-block;
+    position: absolute;
+    left: 5px;
+    top: 50%;
+    margin-top: -15px;
+    transition: all .30s ease-in-out;
+  }
+  .cb-value{
+    position: absolute;
+    left:0;
+    right:0;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    z-index: 9;
+    cursor:pointer;
+    -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";
+  }
+}
+
