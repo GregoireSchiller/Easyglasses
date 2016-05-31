@@ -1,8 +1,8 @@
 class Review < ActiveRecord::Base
-  belongs_to :user
+  belongs_to :patient, :class_name => "User", :foreign_key => :user_id
   validates :rating, :description, presence: true
-  validates :user, presence: true
-  validates :user, uniqueness: true
+  validates :patient, presence: true
+  validates :patient, uniqueness: true
   validates :description, :length => {
     :minimum   => 5,
     :maximum   => 100,
