@@ -51,6 +51,24 @@
     <div id="next-4" class="btn btn-primary"><strong>Next</strong></div>
   </div>
 
+  <div id="slide-5" class="hidden">
+    <p style="font-size: 20px; margin-bottom: 30px">Select which character looks different.</p>
+    <div class="row">
+      <div class="col-xs-3">
+        <%= link_to "1", user_answers_path(:question_position => (Exam.find(params[:id]).user_answers.count + 1), :answered_orientation => 1), method: :post, class: "mobile-button"%>
+      </div>
+      <div class="col-xs-3">
+        <%= link_to "2", user_answers_path(:question_position => (Exam.find(params[:id]).user_answers.count + 1), :answered_orientation => 2), method: :post, class: "mobile-button"%>
+      </div>
+      <div class="col-xs-3">
+        <%= link_to "3", user_answers_path(:question_position => (Exam.find(params[:id]).user_answers.count + 1), :answered_orientation => 3), method: :post, class: "mobile-button"%>
+      </div>
+      <div class="col-xs-3">
+        <%= link_to "4", user_answers_path(:question_position => (Exam.find(params[:id]).user_answers.count + 1), :answered_orientation => 4), method: :post, class: "mobile-button"%>
+      </div>
+    </div>
+  </div>
+
 </div>
 
 
@@ -64,7 +82,7 @@
           $('#slide-2').removeClass('hidden');
         });
       <% else %>
-        <% if Exam.find(params[:id]).user_answers.count < 10 %>
+        <% if (1..4).include?(Exam.find(params[:id]).user_answers.count) || (11..14).include?(Exam.find(params[:id]).user_answers.count) %>
           $('#slide-2').removeClass('hidden');
         <% else %>
           <% if Exam.find(params[:id]).user_answers.count == 10 %>
@@ -78,8 +96,8 @@
                 $('#slide-2').removeClass('hidden');
               });
           <% else %>
-            <% if Exam.find(params[:id]).user_answers.count < 20 %>
-              $('#slide-2').removeClass('hidden');
+            <% if (5..9).include?(Exam.find(params[:id]).user_answers.count) || (15..19).include?(Exam.find(params[:id]).user_answers.count) %>
+              $('#slide-5').removeClass('hidden');
             <% end %>
           <% end %>
         <% end %>

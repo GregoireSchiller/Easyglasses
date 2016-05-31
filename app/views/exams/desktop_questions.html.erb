@@ -18,19 +18,25 @@
   <div id="step_<%= question.position %>" class="wrapper wrapper-grey hidden">
     <div class="container container-min-height">
       <div class="row">
+        <% if (1..5).include?(question.position) || (11..15).include?(question.position) %>
         <div class="col-xs-offset-1 col-xs-10">
-          <div class="orientation-size text-center">
+          <div class="orientation-size">
             <div class="position">
-              <% if (1..5).include?(question.position) || (11..15).include?(question.position) %>
                 <p style="transform: rotate(<%= question.orientation * 90 %>deg); font-size: <%= question.size %>px; text-align: center">E</p>
-              <% else %>
-                <% %w(X X X).insert(question.orientation, "O").each do |letter| %>
-                  <span style="font-size: <%= question.size %>px; text-align: center"><%= letter %></span>
-                <% end %>
-              <% end %>
             </div>
           </div>
         </div>
+        <% else %>
+        <div class="col-xs-offset-1 col-xs-10 flexbox-desktop-questions">
+          <div class="orientation-size", style="<% if question.size == 90 %> width: 70% <% elsif question.size == 45 %> width: 55% <% else %> width: 40% <% end %>">
+            <div class="position", style="justify-content: space-between;">
+             <% %w(X X X).insert(question.orientation - 1, "O").each do |letter| %>
+              <span style="font-size: <%= question.size %>px; text-align: center; justify-content: space-between;"><%= letter %></span>
+            <% end %>
+            </div>
+          </div>
+        </div>
+        <% end %>
       </div>
     </div>
   </div>
