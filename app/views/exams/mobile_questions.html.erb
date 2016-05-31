@@ -55,16 +55,16 @@
     <p style="font-size: 20px; margin-bottom: 30px">Select which character looks different.</p>
     <div class="row">
       <div class="col-xs-3">
-        <%= link_to "1", user_answers_path(:question_position => (Exam.find(params[:id]).user_answers.count + 1), :answered_orientation => 1), method: :post, class: "mobile-button"%>
+        <%= link_to "1", user_answers_path(:question_position => (Exam.find(params[:id]).user_answers.count + 1), :answered_orientation => 1), method: :post, class: "mobile-button-small"%>
       </div>
       <div class="col-xs-3">
-        <%= link_to "2", user_answers_path(:question_position => (Exam.find(params[:id]).user_answers.count + 1), :answered_orientation => 2), method: :post, class: "mobile-button"%>
+        <%= link_to "2", user_answers_path(:question_position => (Exam.find(params[:id]).user_answers.count + 1), :answered_orientation => 2), method: :post, class: "mobile-button-small"%>
       </div>
       <div class="col-xs-3">
-        <%= link_to "3", user_answers_path(:question_position => (Exam.find(params[:id]).user_answers.count + 1), :answered_orientation => 3), method: :post, class: "mobile-button"%>
+        <%= link_to "3", user_answers_path(:question_position => (Exam.find(params[:id]).user_answers.count + 1), :answered_orientation => 3), method: :post, class: "mobile-button-small"%>
       </div>
       <div class="col-xs-3">
-        <%= link_to "4", user_answers_path(:question_position => (Exam.find(params[:id]).user_answers.count + 1), :answered_orientation => 4), method: :post, class: "mobile-button"%>
+        <%= link_to "4", user_answers_path(:question_position => (Exam.find(params[:id]).user_answers.count + 1), :answered_orientation => 4), method: :post, class: "mobile-button-small"%>
       </div>
     </div>
   </div>
