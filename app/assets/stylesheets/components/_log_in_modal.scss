@@ -1,0 +1,40 @@
+.modal-body {
+    position: relative;
+    padding: 7px;
+}
+
+.modal-button {
+  border-radius: 50px;
+}
+
+.modal .loader-bar{
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 30px;
+  border-radius: 10px;
+  overflow: hidden;
+  opacity: 0.99;
+}
+.modal .loader-bar .bar{
+  position: absolute;
+  bottom: 0px;
+  width: 80px;
+  height: 4px;
+  background: #3F72AF;
+  animation: exordo-loader 3s ease infinite;
+  border-radius: 7px;
+  transform-origin: 50% 50%;
+}
+@keyframes exordo-loader {
+  0%  {
+    transform: translateX(0);
+  }
+  50% {
+    transform: translateX(580px);
+  }
+  100% {
+    transform: translateX(0);
+  }
+}
