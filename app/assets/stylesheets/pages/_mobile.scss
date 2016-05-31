@@ -38,3 +38,21 @@
 .container-mobile{
   min-height: calc(100vh - 110px);
 }
+
+.mobile-button-small {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #3F72AF;
+  color: white;
+  border-radius: 50%;
+  font-size: 30px;
+  height: 50px;
+  width: 50px;
+  margin-bottom: 100px;
+  &:hover,
+  &:active,
+  &:focus {
+    text-decoration: none;
+  }
+}
