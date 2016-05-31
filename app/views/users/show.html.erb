@@ -46,7 +46,21 @@
                 </div>
               </div>
               <div class="col-xs-12 col-sm-6">
-                <div class="flexbox"><p class="flex-item">Status: <%= %></p></div>
+                <% if exam.prescription %>
+                  <% if exam.prescription.status == "Pending" %>
+                    <div class="flexxbox">
+                      <p class="flexx-item" style="color: orange;">PRESCRIPTION STATUS: PENDING</p>
+                    </div>
+                  <% elsif exam.prescription.status == "Sent" %>
+                    <div class="flexxbox">
+                      <p class="flexx-item" style="color: #60B65B;">PRESCRIPTION STATUS: SENT</p>
+                    </div>
+                  <% end %>
+                <% else %>
+                  <div class="flexxbox">
+                    <p class="flexx-item" style="color: #D23333;">PRESCRIPTION STATUS: NOT REQUESTED</p>
+                  </div>
+                <% end %>
               </div>
             </div>
             <hr>

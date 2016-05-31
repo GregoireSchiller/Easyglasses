@@ -21,7 +21,13 @@
         <div class="col-xs-offset-1 col-xs-10">
           <div class="orientation-size text-center">
             <div class="position">
-              <p style="transform: rotate(<%= question.orientation * 90 %>deg); font-size: <%= question.size %>px; text-align: center">E</p>
+              <% if (1..5).include?(question.position) || (11..15).include?(question.position) %>
+                <p style="transform: rotate(<%= question.orientation * 90 %>deg); font-size: <%= question.size %>px; text-align: center">E</p>
+              <% else %>
+                <% %w(X X X).insert(question.orientation, "O").each do |letter| %>
+                  <span style="font-size: <%= question.size %>px; text-align: center"><%= letter %></span>
+                <% end %>
+              <% end %>
             </div>
           </div>
         </div>

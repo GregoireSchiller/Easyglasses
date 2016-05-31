@@ -73,14 +73,18 @@
 }
 
 
-.flexbox {
+.flexxbox {
   min-height: 175px;
   text-align: center;
   position: relative;
 }
 
-.flex-item {
+.flexx-item {
   position: absolute;
   top: 76px;
-  left: 50%;
+  left: 10%;
+}
+
+.scroll_fix {
+  margin-bottom: 20px;
 }
