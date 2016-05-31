@@ -6,16 +6,24 @@ class PrescriptionsController < ApplicationController
 
   def create
     @prescription = Prescription.new
-    @ophtalmo = User.where(ophtalmo: true).order("RANDOM()").first
+    @ophtalmo = User.where(ophtalmo: true).first
     @exam = Exam.find(params[:exam_id])
     @prescription.exam = @exam
     @prescription.ophtalmo = @ophtalmo
     @prescription.save
-    redirect_to user_path(current_user)
+    redirect_to desktop_results_exam_path(@exam)
   end
 
-  def show
-
+  def edit
+    @exam = Exam.find(params[:exam_id])
+    @prescription = @exam.prescription
   end
 
+  def update
+    @exam = Exam.find(params[:exam_id])
+    @prescription = @exam.prescription
+    @prescription.status = "Sent"
+    @prescription.save
+    redirect_to desktop_results_exam_path(@exam)
+  end
 end

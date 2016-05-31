@@ -25,18 +25,29 @@
       </div>
     </div>
 
-    <div class="row">
-      <h2><strong> <%= @exam.recommendation %></strong></h2>
-    </div>
+      <div class="row">
+        <h2><strong> <%= @exam.recommendation %></strong></h2>
+      </div>
+
     <div class="row">
       <div class="col-xs-6"><%= link_to "My profile", user_path(@exam.user_id), class: "btn btn-lg btn-primary" %></div>
       <div class="col-xs-6">
-        <% if @exam.prescription == nil %>
+        <% if @exam.prescription %>
+            <% if @exam.prescription.status == "Pending" %>
+              <% if current_user.ophtalmo == false %>
+                <div class="btn btn-lg btn-success" style="background-color: orange !important; border-color: orange !important;">Prescription pending</div>
+              <% else %>
+                <%= form_for [@exam, @exam.prescription] do |f| %>
+                  <%= f.submit "Send prescription", class: "btn btn-lg btn-primary" %>
+                <% end %>
+              <% end %>
+            <% elsif @exam.prescription.status == "Sent" %>
+              <div class="btn btn-lg btn-success" style="background-color: #60B65B !important; border-color: #60B65B !important;">Prescription sent</div>
+            <% end %>
+        <% else %>
           <%= form_for [@exam, @prescription] do |f| %>
             <%= f.submit "Request a prescription", class: "btn btn-lg btn-primary" %>
           <% end %>
-        <% else %>
-          <div class="btn btn-lg btn-success" style="background-color: #60B65B !important; border-color: #60B65B !important;">Prescription requested</div>
         <% end %>
       </div>
     </div>
