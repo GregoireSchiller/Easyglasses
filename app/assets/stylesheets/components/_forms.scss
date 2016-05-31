@@ -40,3 +40,33 @@
   transition: background-color 0.5s ease;
   border-color: rgba(63, 114, 175, 0.9) !important;
 }
+
+.btn-lg-green {
+  background-color: #60B65B;
+  border-color: #60B65B;
+  color: white;
+  padding: 10px 16px;
+  font-size: 20px;
+  line-height: 1.3333333;
+  border-radius: 2px;
+  display: inline-block;
+  margin-bottom: 0;
+  font-weight: normal;
+  text-align: center;
+  vertical-align: middle;
+}
+
+.btn-lg-orange {
+  background-color: orange;
+  border-color: orange;
+  color: white;
+  padding: 10px 16px;
+  font-size: 20px;
+  line-height: 1.3333333;
+  border-radius: 2px;
+  display: inline-block;
+  margin-bottom: 0;
+  font-weight: normal;
+  text-align: center;
+  vertical-align: middle;
+}

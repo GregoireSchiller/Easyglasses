@@ -11,7 +11,10 @@ class PrescriptionsController < ApplicationController
     @prescription.exam = @exam
     @prescription.ophtalmo = @ophtalmo
     @prescription.save
-    redirect_to desktop_results_exam_path(@exam)
+    respond_to do |format|
+      format.html { redirect_to desktop_results_exam_path(@exam) }
+      format.js  # <-- will render `app/views/reviews/create.js.erb`
+    end
   end
 
   def edit
@@ -24,6 +27,9 @@ class PrescriptionsController < ApplicationController
     @prescription = @exam.prescription
     @prescription.status = "Sent"
     @prescription.save
-    redirect_to desktop_results_exam_path(@exam)
+    respond_to do |format|
+      format.html { redirect_to desktop_results_exam_path(@exam) }
+      format.js  # <-- will render `app/views/reviews/create.js.erb`
+    end
   end
 end
