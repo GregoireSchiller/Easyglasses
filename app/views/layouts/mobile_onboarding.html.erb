@@ -12,7 +12,6 @@
   </head>
   <body>
     <div>
-      <%= render 'shared/mobile_navbar' %>
       <div class=wrapper-mobile-grey><div class="container-mobile containter text-center"> <%= yield %></div></div>
       <%= javascript_include_tag 'application' %>
       <%= yield(:after_js) %>

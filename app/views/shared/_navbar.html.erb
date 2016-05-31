@@ -43,11 +43,12 @@
     <% else %>
 
       <!-- Login text link -->
-      <%= link_to t(".sign_in", default: "Login"), new_user_session_path, class: "navbar-wagon-item navbar-wagon-link" %>
+     <%= link_to t(".sign_in", default: "Login"), new_user_session_path, class: "navbar-wagon-item navbar-wagon-link" %>
+
 
     <% end %>
 
-    <!-- Button (call-to-action) -->
+    <!-- Button (call-t o-action) -->
     <% if current_user != nil %>
       <%= link_to exams_path, method: "post", class: "navbar-wagon-button-container" do %>
         <div class="navbar-wagon-item navbar-wagon-button">
