@@ -1,8 +1,8 @@
-<div id="onboarding-slide-1" class="">
+<div id="onboarding-slide-1" style="background-image: url(<%=image_url("start_the_test.jpg")%>);">
   <div class="row">
     <div class="col-xs-12">
       <div class="onboarding-instructions">
-         <p>Welcome to the EasyGlasses eye exam! Press next to begin the tutorial</p>
+         <p>Welcome to the EasyGlasses eye exam! First, you need to stand at 3 meters from your computer. Let's do it !</p>
         <div class="row">
           <div class="col-xs-12">
             <div id="onboarding-next-1" class="btn btn-primary"><strong>Next</strong></div>
@@ -12,12 +12,12 @@
     </div>
   </div>
 </div>
-
 <div id="onboarding-slide-2" class="hidden">
   <div class="row">
     <div class="col-xs-12">
       <div class="onboarding-instructions">
-         <p>If you have a question, press help !</p>
+        <%= image_tag "onboarding2.PNG", {class: 'mobile-picture' } %>
+        <p>Stand with your back against your computer as pictured here. Make sure your shoes are off.</p>
         <div class="row">
           <div class="col-xs-6">
             <div id="onboarding-previous-2" class="btn btn-primary"><strong>Previous</strong></div>
@@ -30,12 +30,12 @@
     </div>
   </div>
 </div>
-
 <div id="onboarding-slide-3" class="hidden">
   <div class="row">
     <div class="col-xs-12">
       <div class="onboarding-instructions">
-         <p>The next set of tests will be taken from 10 FT away from your computer. The following instructions will get you there. Make sure to take an object with you to mark the spot</p>
+        <%= image_tag "onboarding3.PNG", {class: 'mobile-picture' } %>
+        <p>Next, measure <%= @distance.round %> heel-to-toe steps away from your computer.</p>
         <div class="row">
           <div class="col-xs-6">
             <div id="onboarding-previous-3" class="btn btn-primary"><strong>Previous</strong></div>
@@ -52,82 +52,11 @@
   <div class="row">
     <div class="col-xs-12">
       <div class="onboarding-instructions">
-       <p>Removing your shoes is very important for accuracy. If you have not removed your shoes, please do so now before selecting "next"</p>
+       <%= image_tag "onboarding5.PNG", {class: 'mobile-picture' } %>
+        <p>Then, turn around and face your computer. You are now at 3 meters from your computer! You can start the exam!</p>
         <div class="row">
           <div class="col-xs-6">
             <div id="onboarding-previous-4" class="btn btn-primary"><strong>Previous</strong></div>
-          </div>
-          <div class="col-xs-6">
-            <div id="onboarding-next-4" class="btn btn-primary"><strong>Next</strong></div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
-<div id="onboarding-slide-5" class="hidden">
-  <div class="row">
-    <div class="col-xs-12">
-      <div class="onboarding-instructions">
-        <%= image_tag "onboarding2.PNG", {class: 'mobile-picture' } %>
-        <p>First, stand with your back against your computer as pictured here. Make sure your shoes are off.</p>
-        <div class="row">
-          <div class="col-xs-6">
-            <div id="onboarding-previous-5" class="btn btn-primary"><strong>Previous</strong></div>
-          </div>
-          <div class="col-xs-6">
-            <div id="onboarding-next-5" class="btn btn-primary"><strong>Next</strong></div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
-<div id="onboarding-slide-6" class="hidden">
-  <div class="row">
-    <div class="col-xs-12">
-      <div class="onboarding-instructions">
-        <%= image_tag "onboarding3.PNG", {class: 'mobile-picture' } %>
-        <p>Next, measure <%= @distance.round %> heel-to-toe steps away from your computer. Step heel-to-toe as pictured here.</p>
-        <div class="row">
-          <div class="col-xs-6">
-            <div id="onboarding-previous-6" class="btn btn-primary"><strong>Previous</strong></div>
-          </div>
-          <div class="col-xs-6">
-            <div id="onboarding-next-6" class="btn btn-primary"><strong>Next</strong></div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
-<div id="onboarding-slide-7" class="hidden">
-  <div class="row">
-    <div class="col-xs-12">
-      <div class="onboarding-instructions">
-       <%= image_tag "onboarding4.PNG", {class: 'mobile-picture' } %>
-        <p>On your <%= @distance.round  %> step, place an object where your front toe landed</p>
-        <div class="row">
-          <div class="col-xs-6">
-            <div id="onboarding-previous-7" class="btn btn-primary"><strong>Previous</strong></div>
-          </div>
-          <div class="col-xs-6">
-            <div id="onboarding-next-7" class="btn btn-primary"><strong>Next</strong></div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
-<div id="onboarding-slide-8" class="hidden">
-  <div class="row">
-    <div class="col-xs-12">
-      <div class="onboarding-instructions">
-       <%= image_tag "onboarding5.PNG", {class: 'mobile-picture' } %>
-        <p>Then, turn around and face your computer with your toes where you placed the object</p>
-        <div class="row">
-          <div class="col-xs-6">
-            <div id="onboarding-previous-8" class="btn btn-primary"><strong>Previous</strong></div>
           </div>
           <div class="col-xs-6">
             <div class="btn btn-primary">
@@ -145,7 +74,7 @@
 <% content_for(:after_js) do %>
   <%= javascript_tag do %>
     $(document).ready(function() {
-      <% for i in 1..8 %>
+      <% for i in 1..4 %>
         $('#onboarding-next-<%= i %>').click(function(event){
           $('#onboarding-slide-<%= i %>').addClass('hidden');
           $('#onboarding-slide-<%= i + 1 %>').removeClass('hidden');
