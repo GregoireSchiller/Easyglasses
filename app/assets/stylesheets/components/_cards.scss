@@ -70,6 +70,7 @@
 .scroll_fix {
   max-height: calc(100vh - 282px);
   overflow: scroll;
+  margin-bottom: 20px;
 }
 
 
@@ -83,8 +84,4 @@
   position: absolute;
   top: 76px;
   left: 10%;
-}
-
-.scroll_fix {
-  margin-bottom: 20px;
 }
