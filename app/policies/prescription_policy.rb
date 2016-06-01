@@ -13,4 +13,8 @@ class PrescriptionPolicy < ApplicationPolicy
     user == record.ophtalmo
   end
 
+  def pdf_prescription?
+    user == record.patient || user == record.ophtalmo
+  end
+
 end

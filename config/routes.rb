@@ -10,20 +10,20 @@ Rails.application.routes.draw do
     resources :reviews, only: [:create, :new, :update, :destroy, :edit]
   end
 
-resources :exams, only: [:create] do
-  member do
-    get 'desktop_onboarding_eligible' => 'exams#desktop_onboarding_eligible', as: 'desktop_onboarding_eligible'
-    get 'desktop_onboarding' => 'exams#desktop_onboarding', as: 'desktop_onboarding'
-    get 'desktop_questions' => 'exams#desktop_questions', as: 'desktop_questions'
-    get 'desktop_results' => 'exams#desktop_results', as: 'desktop_results'
-    get 'mobile_onboarding' => 'exams#mobile_onboarding', as: 'mobile_onboarding'
-    get 'mobile_questions' => 'exams#mobile_questions', as: 'mobile_questions'
-    get 'mobile_results' => 'exams#mobile_results', as: 'mobile_results'
-    resource :user_answers, only: [:create]
+  resources :exams, only: [:create] do
+    member do
+      get 'desktop_onboarding_eligible' => 'exams#desktop_onboarding_eligible', as: 'desktop_onboarding_eligible'
+      get 'desktop_onboarding' => 'exams#desktop_onboarding', as: 'desktop_onboarding'
+      get 'desktop_questions' => 'exams#desktop_questions', as: 'desktop_questions'
+      get 'desktop_results' => 'exams#desktop_results', as: 'desktop_results'
+      get 'mobile_onboarding' => 'exams#mobile_onboarding', as: 'mobile_onboarding'
+      get 'mobile_questions' => 'exams#mobile_questions', as: 'mobile_questions'
+      get 'mobile_results' => 'exams#mobile_results', as: 'mobile_results'
+      resource :user_answers, only: [:create]
+    end
+    resources :prescriptions, only: [:new, :create, :edit,:update]
   end
-  resources :prescriptions, only: [:new, :create, :edit,:update]
-end
-
+  get 'prescriptions/:id/pdf' => 'prescriptions#pdf_prescription'
 end
 
   # The priority is based upon order of creation: first created -> highest priority.
