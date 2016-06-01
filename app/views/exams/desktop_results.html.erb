@@ -42,7 +42,7 @@
           <% if @exam.prescription %>
               <% if @exam.prescription.status == "Pending" %>
                 <% if current_user.ophtalmo == false %>
-                  <div class="btn-lg-orange">Prescription pending</div>
+                  <div class="btn-lg-dark-blue">Prescription pending</div>
                 <% else %>
                   <!-- Button trigger modal -->
                   <button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal">
