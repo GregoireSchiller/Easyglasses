@@ -32,6 +32,7 @@ class PrescriptionsController < ApplicationController
     @prescription.ophtalmo_score_right = params[:prescription][:ophtalmo_score_right]
     @prescription.description = params[:prescription][:description]
     @prescription.save
+    PrescriptionMailer.prescription(@prescription.patient).deliver_now
     respond_to do |format|
       format.html { redirect_to desktop_results_exam_path(@exam) }
       format.js  # <-- will render `app/views/reviews/create.js.erb`
