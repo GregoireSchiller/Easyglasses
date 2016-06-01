@@ -42,7 +42,7 @@
         <div id="onboarding-previous-4" class="btn btn-primary" style="margin: auto;"><strong>Previous</strong></div>
       </div>
       <div class="col-xs-6">
-        <div id="onboarding-next-4" class="btn btn-primary" style="margin: auto;"><strong>Start your Exam!</strong></div>
+        <%= link_to "Start your exam", mobile_questions_exam_path(params[:id]), class: "btn btn-primary" %>
       </div>
     </div>
   </div>

@@ -1,11 +1,15 @@
 <div class="row">
 
-  <div id="slide-1" class="hidden">
-    <%= image_tag "cover-your-left-eye.png", { class: 'mobile-picture' }%>
-    <h3>Gently cover your right eye now.</h3>
-    <div id="next-1" class="btn btn-primary"><strong>Next</strong></div>
+  <div id="slide-1" style="background-image: linear-gradient(to left, rgba(48,67,82,0.4), rgba(215,210,204,0.3)), url(<%=image_url("cover_right.png")%>);" class="mobile-picture first-slide hidden">
+    <div class="container text-center">
+      <h3>Gently cover your right eye now.</h3>
+      <div class="row">
+        <div class="col-xs-12">
+         <div id="next-1" class="btn btn-primary"><strong>Next</strong></div>
+        </div>
+      </div>
+    </div>
   </div>
-
   <div id="slide-2" class="hidden">
     <p style="font-size: 20px; margin-bottom: 30px">Select the object you see.</p>
     <div class="flexbox">
@@ -38,17 +42,20 @@
     </div>
   <%= link_to "Can't tell", user_answers_path(:question_position => (Exam.find(params[:id]).user_answers.count + 1), :answered_orientation => 0), method: :post, class: "btn btn-primary", style: "margin-top: -80px" %>
   </div>
-
   <div id="slide-3" class="hidden">
     <h2>Uncover and relax your eyes.</h3>
     <h3 style="padding: 30px 0px">You've completed your right eye visual acuity assessment.</h4>
     <div id="next-3" class="btn btn-primary"><strong>Continue</strong></div>
   </div>
-
-  <div id="slide-4" class="hidden">
-    <%= image_tag "cover-your-right-eye.png", {class: 'mobile-picture' } %>
-    <h3>Gently cover your left eye now.</h3>
-    <div id="next-4" class="btn btn-primary"><strong>Next</strong></div>
+  <div id="slide-4" style="background-image: linear-gradient(to left, rgba(48,67,82,0.4), rgba(215,210,204,0.3)), url(<%=image_url("cover_left.png")%>);" class="mobile-picture first-slide hidden">
+    <div class="container text-center">
+      <h3>Gently cover your left eye now.</h3>
+      <div class="row">
+        <div class="col-xs-12">
+         <div id="next-4" class="btn btn-primary"><strong>Next</strong></div>
+        </div>
+      </div>
+    </div>
   </div>
 
   <div id="slide-5" class="hidden">
