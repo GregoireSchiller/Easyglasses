@@ -2,10 +2,12 @@ class PrescriptionsController < ApplicationController
 
   def new
     @prescription = Prescription.new
+    authorize @prescription
   end
 
   def create
     @prescription = Prescription.new
+    authorize @prescription
     @ophtalmo = User.where(ophtalmo: true).first
     @exam = Exam.find(params[:exam_id])
     @prescription.exam = @exam
@@ -22,11 +24,13 @@ class PrescriptionsController < ApplicationController
   def edit
     @exam = Exam.find(params[:exam_id])
     @prescription = @exam.prescription
+    authorize @prescription
   end
 
   def update
     @exam = Exam.find(params[:exam_id])
     @prescription = @exam.prescription
+    authorize @prescription
     @prescription.status = "Sent"
     @prescription.ophtalmo_score_left = params[:prescription][:ophtalmo_score_left]
     @prescription.ophtalmo_score_right = params[:prescription][:ophtalmo_score_right]

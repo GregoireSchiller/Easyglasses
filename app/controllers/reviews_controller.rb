@@ -4,6 +4,7 @@ class ReviewsController < ApplicationController
   def new
     @user = current_user
     @review = Review.new
+    authorize @review
   end
 
   def create
@@ -40,6 +41,7 @@ class ReviewsController < ApplicationController
 
   def set_review
     @review = Review.find(params[:id])
+    authorize @review
   end
 
 end

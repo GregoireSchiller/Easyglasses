@@ -9,6 +9,8 @@ class UsersController < ApplicationController
 
   def update_user_after_onboarding_eligible
     @user = current_user
+    @exam = Exam.find(params[:user][:exam_id].to_i)
+    authorize @exam
     @user.update({
       pregnant: params[:user][:pregnant],
       chronic_health_conditions: params[:user][:chronic_health_conditions],
@@ -16,8 +18,6 @@ class UsersController < ApplicationController
       eye_surgery: params[:user][:eye_surgery]
     })
 
-    @exam = Exam.find(params[:user][:exam_id].to_i)
-    authorize @exam
     if !@user.pregnant || !@user.chronic_health_conditions || !@user.current_pain || !@user.eye_surgery
       redirect_to unable_user_path
     else
