@@ -7,10 +7,11 @@ class PrescriptionsController < ApplicationController
 
   def create
     @prescription = Prescription.new
-    authorize @prescription
-    @ophtalmo = User.where(ophtalmo: true).first
     @exam = Exam.find(params[:exam_id])
     @prescription.exam = @exam
+    authorize @prescription # depends on exam
+
+    @ophtalmo = User.where(ophtalmo: true).first
     @prescription.ophtalmo = @ophtalmo
     @prescription.ophtalmo_score_left = @exam.score_left
     @prescription.ophtalmo_score_right = @exam.score_right
