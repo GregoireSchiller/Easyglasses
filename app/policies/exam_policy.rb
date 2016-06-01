@@ -22,7 +22,7 @@ class ExamPolicy < ApplicationPolicy
   end
 
   def desktop_results?
-    user == record.patient
+    user == record.patient || user == record.ophtalmo
   end
 
 
