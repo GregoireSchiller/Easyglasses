@@ -42,24 +42,24 @@ Question.create(position: 17, orientation: rand(1..4), size: 45)
 Question.create(position: 18, orientation: rand(1..4), size: 45)
 Question.create(position: 19, orientation: rand(1..4), size: 20)
 Question.create(position: 20, orientation: rand(1..4), size: 20)
-# exam11 = Exam.create(exam_date: Date.today - 3, patient: patient1)
-# prescription11 = Prescription.create(description: "blablabla")
-# prescription11.exam = exam11
-# prescription11.ophtalmo = ophtalmo1
-# prescription11.save
-# exam11.save
-# exam13 = Exam.create(exam_date: Date.today - 2, patient: patient3)
-# prescription13 = Prescription.create(description: "blablabla")
-# prescription13.exam = exam13
-# prescription13.ophtalmo = ophtalmo1
-# prescription13.save
-# exam13.save
-# exam14 = Exam.create(exam_date: Date.today, patient: patient4)
-# prescription14 = Prescription.create(description: "blablabla")
-# prescription14.exam = exam14
-# prescription14.ophtalmo = ophtalmo1
-# prescription14.save
-# exam14.save
+exam11 = Exam.create(exam_date: Date.today - 3, patient: patient1)
+prescription11 = Prescription.create(description: "blablabla")
+prescription11.exam = exam11
+prescription11.ophtalmo = ophtalmo1
+prescription11.save
+exam11.save
+exam13 = Exam.create(exam_date: Date.today - 2, patient: patient3)
+prescription13 = Prescription.create(description: "blablabla")
+prescription13.exam = exam13
+prescription13.ophtalmo = ophtalmo1
+prescription13.save
+exam13.save
+exam14 = Exam.create(exam_date: Date.today, patient: patient4)
+prescription14 = Prescription.create(description: "blablabla")
+prescription14.exam = exam14
+prescription14.ophtalmo = ophtalmo1
+prescription14.save
+exam14.save
 # exam22 = Exam.create(exam_date: Date.today - 7, patient: patient2)
 # prescription22 = Prescription.create(description: "blablabla")
 # prescription22.exam = exam22
