@@ -9,6 +9,7 @@ class ReviewsController < ApplicationController
   def create
     @user = current_user
     @review = Review.new(review_params)
+    authorize @review
     if @review.save
       redirect_to user_path(@user)
     else
@@ -20,11 +21,13 @@ class ReviewsController < ApplicationController
   end
 
   def update
+    authorize @review
     @review.update(review_params)
     redirect_to user_path(current_user)
   end
 
   def destroy
+    authorize @review
     @review.destroy
     redirect_to user_path(current_user)
   end

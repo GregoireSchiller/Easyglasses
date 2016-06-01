@@ -1,10 +1,15 @@
 class ExamsController < ApplicationController
+  skip_after_action :verify_authorized, only: :desktop_questions
+  skip_after_action :verify_authorized, only: :mobile_questions
+  skip_after_action :verify_authorized, only: :mobile_onboarding
+  skip_after_action :verify_authorized, only: :mobile_results
 
   def create
     @exam = Exam.new
     @user = current_user
     @exam.patient = @user
     @exam.exam_date = Date.today
+    authorize @exam
     @exam.save
     redirect_to desktop_onboarding_eligible_exam_path(@exam)
   end
@@ -12,11 +17,13 @@ class ExamsController < ApplicationController
   def desktop_onboarding_eligible
     @user = current_user
     @exam = Exam.find(params[:id])
+    authorize @exam
   end
 
   def desktop_onboarding
     @user = current_user
     @exam = Exam.find(params[:id])
+    authorize @exam
   end
 
   def desktop_questions
@@ -25,6 +32,7 @@ class ExamsController < ApplicationController
 
   def desktop_results
     @exam = Exam.find(params[:id])
+    authorize @exam
     @prescription = Prescription.new
     count_left = 0
     count_right = 0
