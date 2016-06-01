@@ -10,6 +10,8 @@ class PrescriptionsController < ApplicationController
     @exam = Exam.find(params[:exam_id])
     @prescription.exam = @exam
     @prescription.ophtalmo = @ophtalmo
+    @prescription.ophtalmo_score_left = @exam.score_left
+    @prescription.ophtalmo_score_right = @exam.score_right
     @prescription.save
     respond_to do |format|
       format.html { redirect_to desktop_results_exam_path(@exam) }
@@ -26,6 +28,9 @@ class PrescriptionsController < ApplicationController
     @exam = Exam.find(params[:exam_id])
     @prescription = @exam.prescription
     @prescription.status = "Sent"
+    @prescription.ophtalmo_score_left = params[:prescription][:ophtalmo_score_left]
+    @prescription.ophtalmo_score_right = params[:prescription][:ophtalmo_score_right]
+    @prescription.description = params[:prescription][:description]
     @prescription.save
     respond_to do |format|
       format.html { redirect_to desktop_results_exam_path(@exam) }

@@ -29,7 +29,7 @@ class UsersController < ApplicationController
     @user = current_user
     @user.update(user_params)
     @exam = Exam.find(params[:user][:exam_id].to_i)
-    SmsSender.new.send_message("+33644601069", "+33" + @user.phone_number, "Click to begin your EasyGlasses exam: https://easyglasses.herokuapp.com/exams/" + @exam.id.to_s + "/mobile_onboarding")
+    SmsSender.new.send_message("+33644601069", "+33" + @user.phone_number, "Click to begin your EasyGlasses exam: www.easyglasses.io/exams/" + @exam.id.to_s + "/mobile_onboarding")
     redirect_to desktop_questions_exam_path(@exam)
   end
 
