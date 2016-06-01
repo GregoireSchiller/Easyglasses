@@ -113,6 +113,8 @@ GEM
     pry-rails (0.3.4)
       pry (>= 0.9.10)
     puma (3.4.0)
+    pundit (1.1.0)
+      activesupport (>= 3.0.0)
     pusher (1.1.0)
       httpclient (~> 2.7)
       multi_json (~> 1.0)
@@ -209,6 +211,7 @@ DEPENDENCIES
   pry-byebug
   pry-rails
   puma
+  pundit
   pusher
   quiet_assets
   rails (= 4.2.6)
