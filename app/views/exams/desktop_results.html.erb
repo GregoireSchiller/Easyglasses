@@ -44,9 +44,10 @@
                 <% if current_user.ophtalmo == false %>
                   <div class="btn-lg-orange">Prescription pending</div>
                 <% else %>
-                  <%= form_for([@exam, @exam.prescription], remote: true) do |f| %>
-                    <%= f.submit "Send prescription", class: "btn btn-lg btn-primary" %>
-                  <% end %>
+                  <!-- Button trigger modal -->
+                  <button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal">
+                    Edit precription
+                  </button>
                 <% end %>
               <% elsif @exam.prescription.status == "Sent" %>
                 <div class="btn-lg-green">Prescription sent</div>
@@ -61,3 +62,37 @@
     </div>
   </div>
 </div>
+
+
+
+<% if current_user.ophtalmo == true %>
+  <!-- Modal -->
+  <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+          <h4 class="modal-title" id="myModalLabel">Edit prescription</h4>
+        </div>
+        <div class="modal-body">
+          <%= form_for([@exam, @exam.prescription], remote: true) do |f| %>
+            <%= f.label :ophtalmo_score_left, 'Enter the correction for the left eye' %><br />
+            <%= f.text_field :ophtalmo_score_left %>
+            <br>
+            <%= f.label :ophtalmo_score_right, 'Enter the correction for the right eye' %><br />
+            <%= f.text_field :ophtalmo_score_right %>
+            <br>
+            <%= f.label :description, 'Please add a general comment on the prescription' %><br />
+            <%= f.text_field :description %>
+            <br>
+            <%= f.submit "Send prescription", class: "btn btn-lg btn-primary", id: "submit-btn-modal" %>
+          <% end %>
+        </div>
+  <!--       <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-primary">Save changes</button>
+        </div> -->
+      </div>
+    </div>
+  </div>
+<% end %>
