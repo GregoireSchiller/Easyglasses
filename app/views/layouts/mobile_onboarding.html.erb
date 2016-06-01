@@ -12,7 +12,7 @@
   </head>
   <body>
     <div>
-      <div class=wrapper-mobile-grey><div class="container-mobile containter text-center"> <%= yield %></div></div>
+      <%= yield %>
       <%= javascript_include_tag 'application' %>
       <%= yield(:after_js) %>
     </div>
