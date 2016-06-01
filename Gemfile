@@ -22,6 +22,8 @@ gem 'jquery-ui-rails'
 gem 'pusher'
 gem 'twilio-ruby', '~> 4.11.1'
 
+gem "letter_opener", group: :development
+
 group :development, :test do
   gem 'binding_of_caller'
   gem 'better_errors'
