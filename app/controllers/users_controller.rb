@@ -19,7 +19,7 @@ class UsersController < ApplicationController
       eye_surgery: params[:user][:eye_surgery].nil?
     })
 
-    if !@user.pregnant || !@user.chronic_health_conditions || !@user.current_pain || !@user.eye_surgery
+    if @user.pregnant || @user.chronic_health_conditions || @user.current_pain || @user.eye_surgery
       redirect_to unable_user_path
     else
      redirect_to desktop_onboarding_exam_path(@exam)
