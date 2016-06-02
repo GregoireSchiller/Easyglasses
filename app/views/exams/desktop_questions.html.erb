@@ -1,4 +1,12 @@
-<div id="step_1" class="wrapper wrapper-grey">
+<div id="step_0" class="">
+   <div class="banner-start-test" style="background-image: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.3)), url(<%= image_url 'start_the_test.jpg' %>); background-position: center center;">
+      <div class="onboarding-banner-content">
+        <h1 style="font-size: 30px">Please follow the instructions on your mobile to start the test.</h1>
+      </div>
+   </div>
+</div>
+
+<div id="step_1" class="wrapper wrapper-grey hidden">
   <div class="container container-min-height">
     <div class="row">
       <div class="col-xs-offset-1 col-xs-10">
@@ -57,14 +65,18 @@
       channel.bind('new_question', function(data) {
         if (parseFloat(data.exam_number) === <%= params[:id] %> ) {
           var i = data.question_position;
-          if (i === '20') {
-            window.location = "<%= root_url + desktop_results_exam_path(params[:id]) %>" ;
+          if (i === '0') {
+            $('#step_0').addClass('hidden');
+            $('#step_1').removeClass('hidden');
           } else {
-            $('#step_' + i ).addClass('hidden');
-            var j = parseFloat(data.question_position) + 1;
-            $('#step_'+ j).removeClass('hidden');
-          }
-        }
+            if (i === '20') {
+              window.location = "<%= root_url + desktop_results_exam_path(params[:id]) %>" ;
+            } else {
+              $('#step_' + i ).addClass('hidden');
+              var j = parseFloat(data.question_position) + 1;
+              $('#step_'+ j).removeClass('hidden');
+            }
+        }}
       });
     });
   </script>

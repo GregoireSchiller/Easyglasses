@@ -3,7 +3,7 @@
       <h3>Gently cover your right eye now.</h3>
       <div class="row">
         <div class="col-xs-12">
-         <div id="next-1" class="btn btn-primary"><strong>Next</strong></div>
+          <%= link_to "Next", user_answers_path(:question_position => 0), method: :post, class: "btn btn-primary", id: "next-1" %>
         </div>
       </div>
     </div>
@@ -13,26 +13,26 @@
     <div class="container">
       <div class="flexbox">
         <div class="flex-item">
-          <%= link_to user_answers_path(:question_position => (Exam.find(params[:id]).user_answers.count + 1), :answered_orientation => 4), method: :post, class: "mobile-button" do %>
+          <%= link_to user_answers_path(:question_position => (Exam.find(params[:id]).user_answers.count), :answered_orientation => 4), method: :post, class: "mobile-button" do %>
             <div style="transform: rotate(0deg)">
               E
             </div>
           <% end %>
         </div>
         <div class="flex-item vertical-items">
-          <%= link_to user_answers_path(:question_position => (Exam.find(params[:id]).user_answers.count + 1), :answered_orientation => 1), method: :post, class: "mobile-button" do %>
+          <%= link_to user_answers_path(:question_position => (Exam.find(params[:id]).user_answers.count), :answered_orientation => 1), method: :post, class: "mobile-button" do %>
             <div style="transform: rotate(90deg)">
               E
             </div>
           <% end %>
-          <%= link_to user_answers_path(:question_position => (Exam.find(params[:id]).user_answers.count + 1), :answered_orientation => 3), method: :post, class: "mobile-button" do %>
+          <%= link_to user_answers_path(:question_position => (Exam.find(params[:id]).user_answers.count), :answered_orientation => 3), method: :post, class: "mobile-button" do %>
             <div style="transform: rotate(270deg)">
               E
             </div>
           <% end %>
         </div>
         <div class="flex-item">
-          <%= link_to user_answers_path(:question_position => (Exam.find(params[:id]).user_answers.count + 1), :answered_orientation => 2), method: :post, class: "mobile-button" do %>
+          <%= link_to user_answers_path(:question_position => (Exam.find(params[:id]).user_answers.count), :answered_orientation => 2), method: :post, class: "mobile-button" do %>
             <div style="transform: rotate(180deg)">
               E
             </div>
@@ -42,7 +42,7 @@
     </div>
 
     <div class="container text-center">
-      <%= link_to "Can't tell", user_answers_path(:question_position => (Exam.find(params[:id]).user_answers.count + 1), :answered_orientation => 0), method: :post, class: "btn btn-primary", style: "margin-top: -80px" %>
+      <%= link_to "Can't tell", user_answers_path(:question_position => (Exam.find(params[:id]).user_answers.count), :answered_orientation => 0), method: :post, class: "btn btn-primary", style: "margin-top: -80px" %>
     </div>
   </div>
 
@@ -61,16 +61,16 @@
     <p style="font-size: 20px; margin-bottom: 30px">Select which character looks different.</p>
     <div class="row">
       <div class="col-xs-3">
-        <%= link_to "1", user_answers_path(:question_position => (Exam.find(params[:id]).user_answers.count + 1), :answered_orientation => 1), method: :post, class: "mobile-button-small"%>
+        <%= link_to "1", user_answers_path(:question_position => (Exam.find(params[:id]).user_answers.count), :answered_orientation => 1), method: :post, class: "mobile-button-small"%>
       </div>
       <div class="col-xs-3">
-        <%= link_to "2", user_answers_path(:question_position => (Exam.find(params[:id]).user_answers.count + 1), :answered_orientation => 2), method: :post, class: "mobile-button-small"%>
+        <%= link_to "2", user_answers_path(:question_position => (Exam.find(params[:id]).user_answers.count), :answered_orientation => 2), method: :post, class: "mobile-button-small"%>
       </div>
       <div class="col-xs-3">
-        <%= link_to "3", user_answers_path(:question_position => (Exam.find(params[:id]).user_answers.count + 1), :answered_orientation => 3), method: :post, class: "mobile-button-small"%>
+        <%= link_to "3", user_answers_path(:question_position => (Exam.find(params[:id]).user_answers.count), :answered_orientation => 3), method: :post, class: "mobile-button-small"%>
       </div>
       <div class="col-xs-3">
-        <%= link_to "4", user_answers_path(:question_position => (Exam.find(params[:id]).user_answers.count + 1), :answered_orientation => 4), method: :post, class: "mobile-button-small"%>
+        <%= link_to "4", user_answers_path(:question_position => (Exam.find(params[:id]).user_answers.count), :answered_orientation => 4), method: :post, class: "mobile-button-small"%>
       </div>
     </div>
   </div>
@@ -85,17 +85,17 @@
           $('#slide-2').removeClass('hidden');
         });
       <% else %>
-        <% if (1..4).include?(Exam.find(params[:id]).user_answers.count) || (11..14).include?(Exam.find(params[:id]).user_answers.count) %>
+        <% if (1..5).include?(Exam.find(params[:id]).user_answers.count) || (12..15).include?(Exam.find(params[:id]).user_answers.count) %>
           $('#slide-2').removeClass('hidden');
         <% else %>
-          <% if Exam.find(params[:id]).user_answers.count == 10 %>
+          <% if Exam.find(params[:id]).user_answers.count == 11 %>
             $('#slide-4').removeClass('hidden');
             $('#next-4').click(function(event){
               $('#slide-4').addClass('hidden');
               $('#slide-2').removeClass('hidden');
               });
           <% else %>
-            <% if (5..9).include?(Exam.find(params[:id]).user_answers.count) || (15..19).include?(Exam.find(params[:id]).user_answers.count) %>
+            <% if (6..10).include?(Exam.find(params[:id]).user_answers.count) || (16..20).include?(Exam.find(params[:id]).user_answers.count) %>
               $('#slide-5').removeClass('hidden');
             <% end %>
           <% end %>
