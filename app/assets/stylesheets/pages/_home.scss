@@ -1,5 +1,5 @@
 .wrapper-grey {
-  background: #DBE2EF;
+  background: white;
   padding: 30px 0;
 }
 
@@ -97,7 +97,7 @@ padding-top: 30px;
   box-shadow: 1px 1px 2px #B3B3B3;
   background-color: white;
   width:350px;
-  height:500px;
+  min-height:545px;
   position: relative;
   margin:auto;
 }
@@ -106,15 +106,21 @@ padding-top: 30px;
   background-size: cover !important;
   background-position: center center;
   height:300px;
+  border-top-left-radius: 4px;
+  border-top-right-radius: 4px;
+  border-bottom: 1px solid #ECECEC;
 }
 
-.card-doctor-footer p {
-  margin-top: 10px;
+.card-doctor-footer {
+  padding: 15px;
+  .doctor-description {
+    margin-top: 10px;
+    p {
+      text-align: left;
+    }
+  }
 }
 
-.doctor-description {
-  margin-left: 5px;
-}
 
 #prescriptions-description {
   margin-bottom: 30px;

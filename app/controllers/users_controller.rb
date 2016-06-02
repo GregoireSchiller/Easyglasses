@@ -13,17 +13,17 @@ class UsersController < ApplicationController
     @exam = Exam.find(params[:user][:exam_id].to_i)
     authorize @exam
     @user.update({
-      pregnant: params[:user][:pregnant].nil?,
-      chronic_health_conditions: params[:user][:chronic_health_conditions].nil?,
-      current_pain: params[:user][:current_pain].nil?,
-      eye_surgery: params[:user][:eye_surgery].nil?
+      pregnant: (params[:user][:pregnant]),
+      chronic_health_conditions: (params[:user][:chronic_health_conditions]),
+      current_pain: (params[:user][:current_pain]),
+      eye_surgery: (params[:user][:eye_surgery])
     })
 
-    if !@user.pregnant || !@user.chronic_health_conditions || !@user.current_pain || !@user.eye_surgery
-      redirect_to unable_user_path
-    else
+    # if @user.pregnant || @user.chronic_health_conditions || @user.current_pain || @user.eye_surgery
+    #   redirect_to unable_user_path
+    # else
      redirect_to desktop_onboarding_exam_path(@exam)
-    end
+    # end
   end
 
   def unable_user
