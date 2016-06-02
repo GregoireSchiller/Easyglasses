@@ -19,6 +19,9 @@ gem "font-awesome-rails"
 gem 'simple_form'
 gem 'autoprefixer-rails'
 gem 'jquery-ui-rails'
+gem 'wicked_pdf'
+#we need the new binary here, so that we can be OS independent
+gem 'wkhtmltopdf-binary', github: 'pallymore/wkhtmltopdf-binary-edge', tag: 'v0.12.2'
 
 gem 'pusher'
 gem 'twilio-ruby', '~> 4.11.1'

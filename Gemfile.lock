@@ -1,3 +1,10 @@
+GIT
+  remote: git://github.com/pallymore/wkhtmltopdf-binary-edge.git
+  revision: 278b58088851e86808e942e060a3d2a6ff83e492
+  tag: v0.12.2
+  specs:
+    wkhtmltopdf-binary (0.12.2)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -190,6 +197,7 @@ GEM
       execjs (>= 0.3.0, < 3)
     warden (1.2.6)
       rack (>= 1.0)
+    wicked_pdf (1.0.6)
 
 PLATFORMS
   ruby
@@ -222,6 +230,8 @@ DEPENDENCIES
   spring
   twilio-ruby (~> 4.11.1)
   uglifier
+  wicked_pdf
+  wkhtmltopdf-binary!
 
 BUNDLED WITH
    1.11.2

@@ -1,0 +1,39 @@
+<!DOCTYPE HTML>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <%= wicked_pdf_stylesheet_link_tag "pdf" -%>
+  </head>
+  <body>
+    <br>
+    <br>
+    <br>
+    Doctor <%= @prescription.ophtalmo.first_name %> <%= @prescription.ophtalmo.last_name %> <br>
+    Ophtalmologist <br>
+    <%= @prescription.ophtalmo.city %> <br>
+    <br>
+    <br>
+    <br>
+    <div style="text-align: right;">
+      <%= @prescription.patient.first_name %> <%= @prescription.patient.last_name %> <br>
+      <%= @prescription.patient.city %> <br>
+    </div>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <div style="font-weight: bold;">Object: Prescrition following EasyGlasses online test</div>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <p>Left eye correction: <%= @prescription.ophtalmo_score_left %></p>
+    <p>Right eye correction: <%= @prescription.ophtalmo_score_right %></p>
+    <br>
+    <br>
+    <p>Comment: <%= @prescription.description %></p>
+
+  </body>
+</html>
