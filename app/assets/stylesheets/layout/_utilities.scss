@@ -34,3 +34,8 @@ h2 {
   font-weight: light;
   font-size: 40px;
 }
+
+a:active,
+a:focus {
+  text-decoration: none;
+}
