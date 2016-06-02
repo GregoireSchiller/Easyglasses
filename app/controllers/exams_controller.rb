@@ -4,6 +4,9 @@ class ExamsController < ApplicationController
   skip_after_action :verify_authorized, only: :mobile_onboarding
   skip_after_action :verify_authorized, only: :mobile_results
 
+  skip_before_action :authenticate_user!,                 only: [:mobile_onboarding]
+  before_action      :authenticate_user_with_exam_token!, only: [:mobile_onboarding]
+
   def create
     @exam = Exam.new
     @user = current_user
@@ -53,11 +56,11 @@ class ExamsController < ApplicationController
   end
 
   def mobile_onboarding
-    @shoe_size = Exam.find(params[:id]).patient.shoe_size
+    @shoe_size = @exam.patient.shoe_size
     @shoe_size_cm = (@shoe_size * 0.66) - 1
     @distance = 300 / @shoe_size_cm
-    render layout: "mobile_onboarding"
 
+    render layout: "mobile_onboarding"
   end
 
   def mobile_questions
@@ -69,6 +72,18 @@ class ExamsController < ApplicationController
   end
 
   private
+
+  def authenticate_user_with_exam_token!
+    token = params[:id]
+    @exam = Exam.find_by_token(token)
+
+    if @exam
+      sign_in(:user, @exam.patient)
+    else
+      flash[:error] = "Exam not found"
+      redirect_to root_path
+    end
+  end
 
   def recommendation(score)
     if score > 15
