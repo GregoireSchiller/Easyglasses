@@ -1,159 +1,56 @@
-<% if @user.ophtalmo == false %>
   <div class="wrapper-grey-padding-top">
+    <div class="container container-min-height">
     <h1 style="text-align: center; margin-bottom: 40px;"><%= 'Hello, ' %><%= @user.first_name %></h1>
     <hr>
 
-    <div class="container text-center">
-      <h3 style="padding-left: 15px"><strong>My account</strong></h3>
-      <div class="row">
-        <div class="col-xs-12 col-sm-6">
-          <h4>Name: <%= @user.first_name %> <%= @user.last_name %> </h4>
-          <h4>Date of birth: <%= @user.date_of_birth.strftime("%d/%m/%Y") %> </h4>
-          <h4>City: <%= @user.city %> </h4>
+    <div class="row">
+      <div class="col-xs-offset-1 col-xs-10">
+        <div class="text-center", style="transform: translateY(50%)">
+          <i class= "fa fa-user onboarding-icon text-center"></i>
         </div>
-        <div class="col-xs-12 col-sm-6">
-          <h4>Shoe size: <%= @user.shoe_size %> </h4>
-          <h4>Email: <%= @user.email %> </h4>
-          <h4>Phone number: +33<%= @user.phone_number %> </h4>
-        </div>
-      </div>
-      <%= link_to "Edit my account", edit_user_registration_path, class: "btn btn-lg btn-primary" %>
-    </div>
-    <hr>
-
-    <div class="container">
-      <div class="row">
-        <div class="col-xs-12 col-sm-6 col-md-8">
-          <div class="scroll_fix">
-          <h3><strong>Your record history</strong></h3>
-          <% if current_user.patient_exams.count == 0 %>
-            <br>
-            <p>You haven't taken any test yet!</p>
-            <br>
-          <% else %>
-            <% vision_test_number = 1 %>
-            <% current_user.patient_exams.each do |exam| %>
-              <div class="row">
-                <div class="col-xs-12 col-sm-6">
-                  <div class="card">
-                    <div class="card_title">Vision test n°<%= vision_test_number %></div>
-                    <% vision_test_number += 1 %>
-                    <div class="test_results">
-                      <h2>Vision score: <%= exam.score_total %></h2>
-                      <p>Left eye: <%= exam.score_left %></p>
-                      <p>Right eye: <%= exam.score_right %></p>
-                    </div>
-                    <div class="test_date">
-                      <p>Test date: <%= exam.exam_date.strftime("%d/%m/%Y") %></p>
-                    </div>
-                    <%= link_to "", desktop_results_exam_path(exam), class: "card-link" %>
-                  </div>
-                </div>
-                <div class="col-xs-12 col-sm-6">
-                  <% if exam.prescription %>
-                    <% if exam.prescription.status == "Pending" %>
-                      <div class="flexxbox">
-                        <p class="flexx-item" style="color: #112D4E;">PRESCRIPTION STATUS: PENDING</p>
-                      </div>
-                    <% elsif exam.prescription.status == "Sent" %>
-                      <div class="flexxbox">
-                        <p class="flexx-item" style="color: #60B65B;">PRESCRIPTION STATUS: SENT</p>
-                      </div>
-                    <% end %>
-                  <% else %>
-                    <div class="flexxbox">
-                      <p class="flexx-item" style="color: #D23333;">PRESCRIPTION STATUS: NOT REQUESTED</p>
-                    </div>
-                  <% end %>
-                </div>
-              </div>
-              <hr>
-            <% end %>
-          <% end %>
-          </div>
-        </div>
-
-        <div class="col-xs-12 col-sm-6 col-md-4">
-
-          <div class="fixed-item hidden" id="review_form">
-            <h3><strong>Give us a feedback</strong></h3>
-            <%= simple_form_for([@user, @review]) do |f| %>
-              <div><%= f.input :rating, label: false, :collection => 1..5, include_blank: "Give a mark" %></div>
-              <div><%= f.input :description, label: false, hint: '5 words min - 100 words max', input_html: { placeholder: "Please detail your feedback" } %></div>
-              <%= f.input :user_id, :as => :hidden, :input_html => { :value => @user.id } %>
-              <div class="text-center"> <%= f.button :submit, "Submit rating", class: "btn btn-primary" %> </div>
-            <% end %>
-          </div>
-
-          <div class="row" style="margin-bottom: 20px;">
-            <% if !@user.review.nil? %>
-            <h3><strong>Your feedback</strong></h3>
-            <div class="card fixed-item hidden" id="review_card">
-              <div class="card_title"></div>
-              <div class="rating">
-                <% @user.review.rating.times do %>
-                  <i class="fa fa-star" aria-hidden="true" style="color: #FFBE00;"></i>
-                <% end %>
-                <% (5 - @user.review.rating).times do %>
-                  <i class="fa fa-star-o" aria-hidden="true" style="color: grey;"></i>
-                <% end %>
-              </div>
-              <div class="review_content">
-                <h4>Your comment:</h4><br>
-                <p>"<%= @user.review.description %>"</p>
-              </div>
-              <a class="card-link" href="#" ></a>
-            </div>
-          </div>
-
-
-          <div class="row flexbox">
-            <% if @user == current_user %>
-              <div class="hidden flex-item" id="delete_button"><%= link_to fa_icon('trash-o'), user_review_path(@user, @review), method: :delete, style: "color: #D44950; font-size: 30px;" %></div>
-            <% end %>
-
-            <% if @user == current_user %>
-              <div class="hidden flex-item" style="cursor: pointer" id="edit_button">
-                <i class="fa fa-pencil" aria-hidden="true" style="color: grey; font-size: 30px;"></i>
-              </div>
-            <% end %>
-          </div>
-          <% end %>
-        </div>
-      </div>
-    </div>
-  </div>
-
-<% elsif @user.ophtalmo == true %>
-
-  <div class="wrapper-grey-padding-top">
-    <h1 style="text-align: center; margin-bottom: 40px;"><%= 'Hello, Doctor ' %><%= @user.last_name %></h1>
-    <hr>
-
-    <div class="container text-center">
-      <h3 style="padding-left: 15px"><strong>My account</strong></h3>
-      <div class="row">
-        <div class="col-xs-12 col-sm-6">
-          <h4>Name: <%= @user.first_name %> <%= @user.last_name %> </h4>
-          <h4>Date of birth: <%= @user.date_of_birth.strftime("%d/%m/%Y") %> </h4>
-        </div>
-        <div class="col-xs-12 col-sm-6">
-          <h4>Email: <%= @user.email %> </h4>
-          <h4>Phone number: +33<%= @user.phone_number %> </h4>
-        </div>
-      </div>
-      <%= link_to "Edit my account", edit_user_registration_path, class: "btn btn-lg btn-primary" %>
-    </div>
-    <hr>
-
-    <div class="container container-min-height-ophtalmo">
-      <div class="row">
-        <div class="col-xs-12">
-          <% @user.ophtalmo_exams.each do |exam| %>
+        <div class="card-desktop-onboarding">
+          <div class="question text-center">
             <div class="row">
-              <div class="col-xs-12 col-sm-offset-1 col-sm-6">
-                <div class="card">
-                  <div class="card_title">Vision test of <%= exam.patient.first_name %> <%= exam.patient.last_name %></div>
+              <div class="col-xs-6">
+                <h4>Name: <%= @user.first_name %> <%= @user.last_name %> </h4>
+                <h4>Date of birth: <%= @user.date_of_birth.strftime("%d/%m/%Y") %> </h4>
+                <h4>City: <%= @user.city %> </h4>
+              </div>
+              <div class="col-xs-6">
+                <h4>Shoe size: <%= @user.shoe_size %> </h4>
+                <h4>Email: <%= @user.email %> </h4>
+                <h4>Phone number: +33<%= @user.phone_number %> </h4>
+              </div>
+            </div>
+            <%= link_to "Edit my account", edit_user_registration_path, class: "btn btn-lg btn-primary", style: 'margin: 20px' %>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <hr>
+
+    <% if @user.ophtalmo == true %>
+
+    <div class="row">
+      <div class="col-xs-offset-1 col-xs-10">
+        <div class="text-center", style="transform: translateY(50%)">
+          <i class= "fa fa-low-vision onboarding-icon text-center"></i>
+        </div>
+        <div class="card-desktop-onboarding", style="padding-bottom: 30px">
+          <div class="question", style="margin-top: 20px">
+            <% if @user.ophtalmo_exams.count == 0 %>
+              <br>
+              <p>You haven't taken any test yet!</p>
+              <br>
+            <% else %>
+              <% vision_test_number = 1 %>
+              <% @user.ophtalmo_exams.each do |exam| %>
+            <div class="row", style="margin-bottom: 20px">
+              <div class="col-xs-6">
+                <div class="card", style="background: #DBE2EF; color: black">
+                  <div class="card_title">Vision test n°<%= vision_test_number %></div>
+                  <% vision_test_number += 1 %>
                   <div class="test_results">
                     <h2>Vision score: <%= exam.score_total %></h2>
                     <p>Left eye: <%= exam.score_left %></p>
@@ -165,30 +62,137 @@
                   <%= link_to "", desktop_results_exam_path(exam), class: "card-link" %>
                 </div>
               </div>
-              <div class="col-xs-12 col-sm-5">
-                <% if exam.prescription %>
-                  <% if exam.prescription.status == "Pending" %>
-                    <div class="flexxbox">
-                      <p class="flexx-item" style="color: orange;">PRESCRIPTION STATUS: PENDING</p>
-                    </div>
-                  <% elsif exam.prescription.status == "Sent" %>
-                    <div class="flexxbox">
-                      <p class="flexx-item" style="color: #60B65B;">PRESCRIPTION STATUS: SENT</p>
-                    </div>
+              <div class="col-xs-6">
+                <div class="text-center">
+                  <% if exam.prescription %>
+                    <% if exam.prescription.status == "Pending" %>
+                      <p style="color: #112D4E; margin-top: 18%">PRESCRIPTION STATUS: PENDING</p>
+                    <% elsif exam.prescription.status == "Sent" %>
+                      <p style="color: #60B65B; margin-top: 18%">PRESCRIPTION STATUS: SENT</p>
+                    <% end %>
+                  <% else %>
+                    <p style="color: #D23333; margin-top: 18%">PRESCRIPTION STATUS: NOT REQUESTED</p>
                   <% end %>
-                <% else %>
-                  <div class="flexxbox">
-                    <p class="flexx-item" style="color: #D23333;">PRESCRIPTION STATUS: NOT REQUESTED</p>
-                  </div>
-                <% end %>
+                </div>
               </div>
             </div>
-            <hr>
-          <% end %>
+            <% end %>
+            <% end %>
+          </div>
         </div>
       </div>
     </div>
-<% end %>
+
+
+    <% elsif @user.ophtalmo == false %>
+
+    <div class="row">
+      <div class="col-xs-offset-1 col-xs-10">
+        <div class="text-center", style="transform: translateY(50%)">
+          <i class= "fa fa-low-vision onboarding-icon text-center"></i>
+        </div>
+        <div class="card-desktop-onboarding", style="padding-bottom: 30px">
+          <div class="question", style="margin-top: 20px">
+            <% if current_user.patient_exams.count == 0 %>
+              <br>
+              <p>You haven't taken any test yet!</p>
+              <br>
+            <% else %>
+              <% vision_test_number = 1 %>
+              <% current_user.patient_exams.each do |exam| %>
+            <div class="row", style="margin-bottom: 20px">
+              <div class="col-xs-6">
+                <div class="card", style="background: #DBE2EF; color: black">
+                  <div class="card_title">Vision test n°<%= vision_test_number %></div>
+                  <% vision_test_number += 1 %>
+                  <div class="test_results">
+                    <h2>Vision score: <%= exam.score_total %></h2>
+                    <p>Left eye: <%= exam.score_left %></p>
+                    <p>Right eye: <%= exam.score_right %></p>
+                  </div>
+                  <div class="test_date">
+                    <p>Test date: <%= exam.exam_date.strftime("%d/%m/%Y") %></p>
+                  </div>
+                  <%= link_to "", desktop_results_exam_path(exam), class: "card-link" %>
+                </div>
+              </div>
+              <div class="col-xs-6">
+                <div class="text-center">
+                  <% if exam.prescription %>
+                    <% if exam.prescription.status == "Pending" %>
+                      <p style="color: #112D4E; margin-top: 18%">PRESCRIPTION STATUS: PENDING</p>
+                    <% elsif exam.prescription.status == "Sent" %>
+                      <p style="color: #60B65B; margin-top: 18%">PRESCRIPTION STATUS: SENT</p>
+                    <% end %>
+                  <% else %>
+                    <p style="color: #D23333; margin-top: 18%">PRESCRIPTION STATUS: NOT REQUESTED</p>
+                  <% end %>
+                </div>
+              </div>
+            </div>
+            <% end %>
+            <% end %>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <hr>
+
+    <div class="row">
+      <div class="col-xs-offset-1 col-xs-10">
+        <div class="text-center", style="transform: translateY(50%)">
+          <i class= "fa fa-comment-o onboarding-icon text-center"></i>
+        </div>
+        <div class="card-desktop-onboarding">
+          <div class="question text-center", style="padding: 20px">
+              <div class= "hidden" id="review_form">
+                <%= simple_form_for([@user, @review]) do |f| %>
+                  <div><%= f.input :rating, label: false, :collection => 1..5, include_blank: "Give a mark" %></div>
+                  <div><%= f.input :description, label: false, hint: '5 words min - 100 words max', input_html: { placeholder: "Please detail your feedback" } %></div>
+                  <%= f.input :user_id, :as => :hidden, :input_html => { :value => @user.id } %>
+                  <div class="text-center"> <%= f.button :submit, "Submit rating", class: "btn btn-primary" %> </div>
+                <% end %>
+              </div>
+            <% if !@user.review.nil? %>
+              <div class= "hidden" id="review_card">
+                <div class="">
+                  <% @user.review.rating.times do %>
+                    <i class="fa fa-star" aria-hidden="true" style="color: #FFBE00; font-size: 20px"></i>
+                  <% end %>
+                  <% (5 - @user.review.rating).times do %>
+                    <i class="fa fa-star-o" aria-hidden="true" style="color: grey; font-size: 20px"></i>
+                  <% end %>
+                </div>
+                <div class="">
+                  <p>"<%= @user.review.description %>"</p>
+                </div>
+                <div class="row">
+                  <div class="col-xs-6">
+                    <div class="" id="delete_button">
+                      <%= link_to user_review_path(@user, @review), method: :delete do %>
+                        <i class="fa fa-trash-o", style="color: #D44950; font-size: 30px"></i>
+                      <% end %>
+                    </div>
+                  </div>
+                  <div class="col-xs-6">
+                    <div class="" style="cursor: pointer" id="edit_button">
+                      <i class="fa fa-pencil" aria-hidden="true" style="color: grey; font-size: 30px;"></i>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            <% end %>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <% end %>
+
+  </div>
+</div>
+
 
 <%= content_for :after_js do %>
   <script>
@@ -210,7 +214,6 @@
       $("#delete_button").addClass("hidden");
       $("#edit_button").addClass("hidden");
     })
-
 
   </script>
 

@@ -1,16 +1,11 @@
 .card {
   height: 175px;
-  text-shadow: 0 1px 3px rgba(0,0,0,0.6);
   background-size: cover !important;
   color: white;
   position: relative;
   max-width: 60vh;
   background-color: #3F72AF;
   border-radius: 4px;
-}
-
-.card p {
-  font-style: italic;
 }
 
 .card_title {
@@ -84,4 +79,15 @@
   position: absolute;
   top: 76px;
   left: 10%;
+}
+
+.flexx-item-bottom {
+  position: absolute;
+  top: 10%;
+  left: 10%;
+}
+
+.icon-trash {
+color: #D44950;
+font-size: 30px
 }

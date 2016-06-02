@@ -4,6 +4,7 @@ class UsersController < ApplicationController
   def show
     @user = current_user
     authorize @user
+    @prescription = Prescription.new
     @review = current_user.review.nil? ? Review.new : current_user.review
   end
 
