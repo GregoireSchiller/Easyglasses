@@ -36,9 +36,10 @@ class UsersController < ApplicationController
     @user.update(user_params)
 
     @exam = Exam.find(params[:user][:exam_id].to_i)
+
     @exam.update(token: SecureRandom.hex(7))
 
-    twillio_number = "+33644601069"
+    twillio_number = "EasyGlasses"
     user_number    = "+33#{@user.phone_number}"
 
     message = <<~HEREDOC

@@ -10,7 +10,7 @@ class PrescriptionMailer < ApplicationMailer
     @user = @prescription.patient
     @ophtalmo = @prescription.ophtalmo
     attachments["prescription_#{@user.first_name}_#{@user.last_name}.pdf"] = WickedPdf.new.pdf_from_string(
-      render_to_string(pdf: "prescription_#{@user.first_name}_#{@user.last_name}", template: 'prescriptions/pdf_prescription.html.erb', layout: false), {}
+      render_to_string(pdf: "prescription_#{@user.first_name}_#{@user.last_name}", template: 'prescriptions/pdf_prescription.html.erb', layout: false, :show_as_html => true ), {}
     )
     mail(to: @user.email, subject: 'Your prescription by EasyGlasses')
   end
