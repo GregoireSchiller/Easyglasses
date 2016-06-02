@@ -26,13 +26,15 @@
     </div>
   </div>
 
-  <div class="form-actions">
-    <%= f.button :submit, "Update" %>
+  <div class="form-actions container">
+    <div class="row">
+      <div class="col-xs-12 text-center"><%= f.button :submit, "Update" %></div>
+    </div>
   </div>
 <% end %>
 
-<h3>Cancel my account</h3>
+<h3 style="text-align: center; margin-top: 40px;">Cancel my account</h3>
 
-<p>Unhappy? <%= link_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete %></p>
+<p style="text-align: center;">Unhappy? <%= link_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete %></p>
 
-<%= link_to "Back", :back %>
+<p style="text-align: center;"><%= link_to "Back", :back %></p>
