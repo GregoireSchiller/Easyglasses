@@ -1,0 +1,5 @@
+# config/meta.yml
+meta_title: "EasyGlasses"
+meta_description: "Online optical exam that enables you to get glasses prescription from the confort of your home!"
+meta_image: "homepage.jpg" # Une image dans votre dossier app/assets/images/
+twitter_account: "@lewagonparis" # indispensable pour les Twitter Cards
