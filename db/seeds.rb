@@ -15,13 +15,12 @@ Exam.destroy_all
 Question.destroy_all
 User.destroy_all
 
-patient1 = User.create(date_of_birth: Date.new(1988,1,11), first_name: "Grégoire", last_name: "Schiller", city: "Paris", email: "test1@test.com", password: "testtest", ophtalmo: false)
+patient1 = User.create(date_of_birth: Date.new(1988,1,11), first_name: "Grégoire", last_name: "Schiller", city: "Paris", email: "gregoire.schiller@gmail.com", password: "testtest", ophtalmo: false)
 patient2 = User.create(date_of_birth: Date.new(1988,1,11), first_name: "Grégoire", last_name: "Bolloré", city: "Paris", email: "test2@test.com", password: "testtest", ophtalmo: false)
 patient3 = User.create(date_of_birth: Date.new(1988,1,11), first_name: "Édouard", last_name: "de Nettancourt", city: "Paris", email: "test3@test.com", password: "testtest", ophtalmo: false)
-patient4 = User.create(date_of_birth: Date.new(1988,1,11), first_name: "Benjamin", last_name: "Meuleman", city: "Paris", email: "test4@test.com", password: "testtest", ophtalmo: false)
-ophtalmo1 = User.create(date_of_birth: Date.new(1988,1,11), first_name: "Boris", last_name: "Paillard", city: "Paris", email: "test5@test.com", password: "testtest", ophtalmo: true)
+patient4 = User.create(date_of_birth: Date.new(1988,1,11), first_name: "Benjamin", last_name: "Meuleman", city: "Paris", email: "benjamin.meuleman@gmail.com", password: "testtest", ophtalmo: false)
+ophtalmo1 = User.create(date_of_birth: Date.new(1988,1,11), first_name: "Boris", last_name: "Paillard", city: "Paris", email: "boris.ophtalmo@easyglasses.io", password: "testtest", ophtalmo: true)
 # ophtalmo2 = User.create(date_of_birth: Date.new(1988,1,11), first_name: "Romain", last_name: "Paillard", city: "Paris", email: "test6@test.com", password: "testtest", ophtalmo: true)
-Review.create(rating: 3, description: "average", patient: patient1)
 Question.create(position: 1, orientation: rand(1..4), size: 350)
 Question.create(position: 2, orientation: rand(1..4), size: 180)
 Question.create(position: 3, orientation: rand(1..4), size: 90)
@@ -42,24 +41,27 @@ Question.create(position: 17, orientation: rand(1..4), size: 45)
 Question.create(position: 18, orientation: rand(1..4), size: 45)
 Question.create(position: 19, orientation: rand(1..4), size: 20)
 Question.create(position: 20, orientation: rand(1..4), size: 20)
-exam11 = Exam.create(exam_date: Date.today - 3, patient: patient1)
-prescription11 = Prescription.create(description: "blablabla")
+
+exam11 = Exam.create(exam_date: Date.today - 540, patient: patient1)
+exam.score_right = 9
+exam.score_left = 9
+exam.score_total = 18
+prescription11 = Prescription.create(description: "Vous n'avez pas besoin de lunettes pour le moment. N'hésitez pas à refaire le test dans 1 an pour tester de nouveau votre vue.")
 prescription11.exam = exam11
 prescription11.ophtalmo = ophtalmo1
 prescription11.save
 exam11.save
-exam13 = Exam.create(exam_date: Date.today - 2, patient: patient3)
-prescription13 = Prescription.create(description: "blablabla")
+
+exam13 = Exam.create(exam_date: Date.today - 180, patient: patient3)
+exam.score_right = 7
+exam.score_left = 9
+exam.score_total = 16
+prescription13 = Prescription.create(description: "Vue à l'oeil droit déclinante. Vous n'avez toujours pas besoin de lunettes, mais merci de refaire le test dans 6 mois pour suivre l'évolution de votre vue.")
 prescription13.exam = exam13
 prescription13.ophtalmo = ophtalmo1
 prescription13.save
 exam13.save
-exam14 = Exam.create(exam_date: Date.today, patient: patient4)
-prescription14 = Prescription.create(description: "blablabla")
-prescription14.exam = exam14
-prescription14.ophtalmo = ophtalmo1
-prescription14.save
-exam14.save
+
 # exam22 = Exam.create(exam_date: Date.today - 7, patient: patient2)
 # prescription22 = Prescription.create(description: "blablabla")
 # prescription22.exam = exam22
