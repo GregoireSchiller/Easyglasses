@@ -72,20 +72,37 @@
       <div class="modal-content">
         <div class="modal-header">
           <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-          <h4 class="modal-title" id="myModalLabel">Edit prescription</h4>
+          <h4 class="modal-title" id="myModalLabel">Edit prescription of <%= @exam.patient.first_name %> <%= @exam.patient.last_name %></h4>
         </div>
         <div class="modal-body">
           <%= form_for([@exam, @exam.prescription], remote: true) do |f| %>
-            <%= f.label :ophtalmo_score_left, 'Enter the correction for the left eye' %><br />
-            <%= f.text_field :ophtalmo_score_left %>
-            <br>
-            <%= f.label :ophtalmo_score_right, 'Enter the correction for the right eye' %><br />
-            <%= f.text_field :ophtalmo_score_right %>
-            <br>
-            <%= f.label :description, 'Please add a general comment on the prescription' %><br />
-            <%= f.text_field :description %>
-            <br>
-            <%= f.submit "Send prescription", class: "btn btn-lg btn-primary", id: "submit-btn-modal" %>
+            <div class="form-inputs container">
+              <div class="row">
+                <div class="col-xs-6 col-sm-6" style="margin:auto">
+                  <%= f.label :ophtalmo_score_left, 'Enter the correction for the left eye' %><br />
+                  <%= f.number_field :ophtalmo_score_left, step: 0.25 %>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-xs-6 col-sm-6">
+                  <%= f.label :ophtalmo_score_right, 'Enter the correction for the right eye' %><br />
+                  <%= f.number_field :ophtalmo_score_right, step: 0.25 %>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-xs-6 col-sm-6">
+                  <%= f.label :description, 'Please add a general comment on the prescription' %><br />
+                  <%= f.text_area(:description, size: '60x4') %>
+                </div>
+              </div>
+            </div>
+            <div class="form-actions container">
+              <div class="row">
+                <div class="col-xs-12 col-sm-6 text-center">
+                  <%= f.submit "Send prescription", class: "btn btn-lg btn-primary modal-button", style: 'margin: 20px 0 20px 0;', id: "submit-btn-modal" %>
+                </div>
+              </div>
+            </div>
           <% end %>
         </div>
   <!--       <div class="modal-footer">
