@@ -1,6 +1,4 @@
-<div class="row">
-
-  <div id="slide-1" style="background-image: linear-gradient(to left, rgba(48,67,82,0.4), rgba(215,210,204,0.3)), url(<%=image_url("cover_right.png")%>);" class="mobile-picture first-slide hidden">
+  <div id="slide-1" style="background-image: linear-gradient(to left, rgba(48,67,82,0.4), rgba(215,210,204,0.3)), url(<%=image_url("cover_right.jpg")%>);" class="mobile-picture first-slide hidden">
     <div class="container text-center">
       <h3>Gently cover your right eye now.</h3>
       <div class="row">
@@ -42,12 +40,8 @@
     </div>
   <%= link_to "Can't tell", user_answers_path(:question_position => (Exam.find(params[:id]).user_answers.count + 1), :answered_orientation => 0), method: :post, class: "btn btn-primary", style: "margin-top: -80px" %>
   </div>
-  <div id="slide-3" class="hidden">
-    <h2>Uncover and relax your eyes.</h3>
-    <h3 style="padding: 30px 0px">You've completed your right eye visual acuity assessment.</h4>
-    <div id="next-3" class="btn btn-primary"><strong>Continue</strong></div>
-  </div>
-  <div id="slide-4" style="background-image: linear-gradient(to left, rgba(48,67,82,0.4), rgba(215,210,204,0.3)), url(<%=image_url("cover_left.png")%>);" class="mobile-picture first-slide hidden">
+
+  <div id="slide-4" style="background-image: linear-gradient(to left, rgba(48,67,82,0.4), rgba(215,210,204,0.3)), url(<%=image_url("cover_left.jpg")%>);" class="mobile-picture first-slide hidden">
     <div class="container text-center">
       <h3>Gently cover your left eye now.</h3>
       <div class="row">
@@ -76,9 +70,6 @@
     </div>
   </div>
 
-</div>
-
-
 <% content_for(:after_js) do %>
   <script type="text/javascript">
     $(document).ready(function() {
@@ -93,14 +84,10 @@
           $('#slide-2').removeClass('hidden');
         <% else %>
           <% if Exam.find(params[:id]).user_answers.count == 10 %>
-            $('#slide-3').removeClass('hidden');
-            $('#next-3').click(function(event){
-              $('#slide-3').addClass('hidden');
-              $('#slide-4').removeClass('hidden');
-            });
-              $('#next-4').click(function(event){
-                $('#slide-4').addClass('hidden');
-                $('#slide-2').removeClass('hidden');
+            $('#slide-4').removeClass('hidden');
+            $('#next-4').click(function(event){
+              $('#slide-4').addClass('hidden');
+              $('#slide-2').removeClass('hidden');
               });
           <% else %>
             <% if (5..9).include?(Exam.find(params[:id]).user_answers.count) || (15..19).include?(Exam.find(params[:id]).user_answers.count) %>

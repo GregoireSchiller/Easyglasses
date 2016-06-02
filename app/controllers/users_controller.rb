@@ -32,10 +32,21 @@ class UsersController < ApplicationController
 
   def update_user_after_onboarding
     @user = current_user
+    authorize @user # always before updating
     @user.update(user_params)
-    authorize @user
+
     @exam = Exam.find(params[:user][:exam_id].to_i)
-    SmsSender.new.send_message("+33644601069", "+33" + @user.phone_number, "Click to begin your EasyGlasses exam: www.easyglasses.io/exams/" + @exam.id.to_s + "/mobile_onboarding")
+    @exam.update(token: SecureRandom.hex(7))
+
+    twillio_number = "+33644601069"
+    user_number    = "+33#{@user.phone_number}"
+
+    message = <<~HEREDOC
+      Click to begin your EasyGlasses exam:
+      #{mobile_onboarding_exam_url(id: @exam.token)}
+    HEREDOC
+
+    SmsSender.new.send_message(twillio_number, user_number, message)
     redirect_to desktop_questions_exam_path(@exam)
   end
 

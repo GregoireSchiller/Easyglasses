@@ -8,7 +8,7 @@
     </div>
   </div>
 </div>
-<div id="onboarding-slide-2" style="background-image: linear-gradient(to left, rgba(48,67,82,0.4), rgba(215,210,204,0.3)), url(<%= image_url("onboarding01.PNG")%>);" class="mobile-picture hidden">
+<div id="onboarding-slide-2" style="background-image: linear-gradient(to left, rgba(48,67,82,0.4), rgba(215,210,204,0.3)), url(<%= image_url("onboarding01.jpg")%>);" class="mobile-picture hidden">
   <div class="container text-center">
     <p>Stand with your back against your computer as pictured here. Make sure your shoes are off.</p>
     <div class="row">
@@ -21,7 +21,7 @@
     </div>
   </div>
 </div>
-<div id="onboarding-slide-3" style="background-image: linear-gradient(to left, rgba(48,67,82,0.4), rgba(215,210,204,0.3)), url(<%= image_url("onboarding02.png")%>);" class="mobile-picture hidden">
+<div id="onboarding-slide-3" style="background-image: linear-gradient(to left, rgba(48,67,82,0.4), rgba(215,210,204,0.3)), url(<%= image_url("onboarding02.jpg")%>);" class="mobile-picture hidden">
   <div class="container text-center">
     <p>Next, measure <%= @distance.round %> heel-to-toe steps away from your computer.</p>
     <div class="row">
@@ -34,7 +34,7 @@
     </div>
   </div>
 </div>
-<div id="onboarding-slide-4" style="background-image: linear-gradient(to left, rgba(48,67,82,0.4), rgba(215,210,204,0.3)), url(<%= image_url("onboarding03.png")%>);" class="mobile-picture hidden">
+<div id="onboarding-slide-4" style="background-image: linear-gradient(to left, rgba(48,67,82,0.4), rgba(215,210,204,0.3)), url(<%= image_url("onboarding03.jpg")%>);" class="mobile-picture hidden">
   <div class="container text-center">
     <p>Then, turn around and face your computer. You are now at 3 meters from your computer! You can start the exam!</p>
     <div class="row">
@@ -42,7 +42,7 @@
         <div id="onboarding-previous-4" class="btn btn-primary" style="margin: auto;"><strong>Previous</strong></div>
       </div>
       <div class="col-xs-6">
-        <%= link_to "Start your exam", mobile_questions_exam_path(params[:id]), class: "btn btn-primary" %>
+        <%= link_to "Start your exam", mobile_questions_exam_path(@exam), class: "btn btn-primary" %>
       </div>
     </div>
   </div>
