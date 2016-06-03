@@ -40,7 +40,7 @@ class ExamsController < ApplicationController
     count_left = 0
     count_right = 0
     @exam.user_answers.each_with_index do |answer, index|
-      if index > 0
+      if answer.orientation > 0
         if answer.answered_orientation == Question.find_by(position: index).orientation
           if answer.question.position < 11
             count_left += 1
