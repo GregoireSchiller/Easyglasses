@@ -15,7 +15,7 @@ Exam.destroy_all
 Question.destroy_all
 User.destroy_all
 
-patient1 = User.create(date_of_birth: Date.new(1988,1,11), first_name: "Grégoire", last_name: "Schiller", city: "Paris", email: "gregoire.schiller@gmail.com", password: "testtest", ophtalmo: false)
+patient1 = User.create(date_of_birth: Date.new(1988,1,11), first_name: "Grégoire", last_name: "Schiller", city: "Paris", email: "gregoire.easyglasses@gmail.com", password: "testtest", ophtalmo: false)
 patient2 = User.create(date_of_birth: Date.new(1988,1,11), first_name: "Grégoire", last_name: "Bolloré", city: "Paris", email: "test2@test.com", password: "testtest", ophtalmo: false)
 patient3 = User.create(date_of_birth: Date.new(1988,1,11), first_name: "Édouard", last_name: "de Nettancourt", city: "Paris", email: "test3@test.com", password: "testtest", ophtalmo: false)
 patient4 = User.create(date_of_birth: Date.new(1988,1,11), first_name: "Benjamin", last_name: "Meuleman", city: "Paris", email: "benjamin.meuleman@gmail.com", password: "testtest", ophtalmo: false)
